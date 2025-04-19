@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 @theme{
-    --color-body:#E5E8EB;
+    --color-body:#EBE1D5;
     --color-header:#E9E1D8;
+    --color-headerDark:#C7C0B7;
     --color-title:#3A230A;
+    --color-botones: #6B4226;
+    --color-secundario: #F5F2F0;
 }
 
 @layer components{
@@ -87,6 +90,193 @@
     
     .carousel-text-overlay button:hover {
         background-color: #8B5E3C;
+    }
+
+    /* Product card styles */
+    #product-gallery {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .product-card {
+        background-color: var(--color-secundario);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-card img {
+        border-radius: 8px;
+        width: 100%;
+        height: 12rem;
+        object-fit: cover;
+        margin-bottom: 1rem;
+    }
+
+    .product-card h3 {
+        color: var(--color-title);
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .product-card p {
+        color: var(--color-botones);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        font-size: 1.125rem;
+    }
+
+    .product-card .btn-detalles,
+    .product-card .btn-agregar {
+        background-color: var(--color-botones);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .product-card .btn-detalles:hover,
+    .product-card .btn-agregar:hover {
+        background-color: #8B5E3C;
+    }
+
+    .product-card .btn-detalles {
+        margin-right: 0.5rem;
+    }
+
+    .product-card .btn-agregar {
+        margin-left: 0.5rem;
+    }
+
+    .product-card .flex {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Sliding animation for dynamic heading */
+    #dynamic-heading {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slide-out-left {
+        animation: slideOutLeft 0.5s forwards;
+    }
+
+    .slide-in-right {
+        animation: slideInRight 0.5s forwards;
+    }
+
+    @keyframes slideOutLeft {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    /* Product card styles */
+    #product-gallery {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .product-card {
+        background-color: var(--color-secundario);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-card img {
+        border-radius: 8px;
+        width: 100%;
+        height: 12rem;
+        object-fit: cover;
+        margin-bottom: 1rem;
+    }
+
+    .product-card h3 {
+        color: var(--color-title);
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .product-card p {
+        color: var(--color-botones);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        font-size: 1.125rem;
+    }
+
+    .product-card .btn-detalles,
+    .product-card .btn-agregar {
+        background-color: var(--color-botones);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .product-card .btn-detalles:hover,
+    .product-card .btn-agregar:hover {
+        background-color: #8B5E3C;
+    }
+
+    .product-card .btn-detalles {
+        margin-right: 0.5rem;
+    }
+
+    .product-card .btn-agregar {
+        margin-left: 0.5rem;
+    }
+
+    .product-card .flex {
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
     
 

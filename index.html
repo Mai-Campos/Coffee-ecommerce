@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +9,8 @@
     <link href="styles/output.css" rel="stylesheet">
     
 </head>
-<body class="bg-body">
- 
+<body class="bg-white">
+   
         <header class="bg-header p-2.5  shadow-lg/10">
             <nav class=" flex flex-row items-center justify-between">
                 <div class="shop-name flex-1">
@@ -24,6 +24,7 @@
                 </button>
 
                 <ul id="navbar-menu" class="navbar list-none justify-end space-x-6 md:flex hidden text-2xl ">
+                    <li ><a href="#seccion-login" class="bg-white p-3 rounded-2xl hover:bg-gray-100">Iniciar Sesion</a></li>
                     <li ><a href="#seccion-principal" class="hover:underline">Principal</a></li>
                     <li><a href="#seccion-contacto" class="hover:underline">Contáctanos</a></li>
                     <li><a href="#seccion-contacto" class="hover:underline">Blog</a></li>
@@ -37,10 +38,12 @@
                 </ul>
             </nav>
 
-            <div id="mobile-menu" class="md:hidden hidden bg-header p-4 text-2xl">
+            <div id="mobile-menu" class="md:hidden hidden bg-header p-4 text-2xl  ">
                 <ul class="list-none space-y-4">
+                    
                     <li><a href="#seccion-principal" class="block">Principal</a></li>
                     <li><a href="#seccion-contacto" class="block">Contáctanos</a></li>
+                    <li ><a href="#seccion-login" class="bg-white p-3 rounded-2xl hover:bg-gray-100 float-end">Iniciar Sesion</a></li>
     <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-cart4 h-10 w-14" viewBox="0 0 16 16">
                         <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
                     </svg>
@@ -48,8 +51,15 @@
             </div>
         </header>
 
-                                                    <!--Ofertas Destacadas-->
-        <section id="ofertas-destacadas" class="my-10 px-4">
+        <section id="explanatory-container" class="max-w-5xl mx-auto my-10 px-4">
+            <section id="explanatory-section" class="text-center overflow-hidden relative">
+                <h2 id="dynamic-heading" class="text-5xl font-extrabold text-title whitespace-nowrap inline-block"></h2>
+                <p class="text-lg text-botones mt-4">Bienvenido a Coffe First, tu tienda en línea de cafés de alta calidad. Descubre nuestra variedad de productos seleccionados para los amantes del café. Revisa nuestro <a href="#blog" class="font-bold">Blog</a> para ver curiosidades sobre el café</p>
+            </section>
+        </section>
+
+        <!--Ofertas Destacadas-->
+        <section id="ofertas-destacadas" class="my-10 px-4 flex flex-col">
             <h2 class="text-4xl font-bold text-center mb-6 text-title">Ofertas Destacadas</h2>
             <div class="carousel-container relative overflow-hidden  w-full mx-auto rounded-lg">
                 <div class="carousel-track flex transition-transform duration-500 ease-in-out w-full">
@@ -64,6 +74,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="carousel-item m-auto w-full ">
                         <div>
                             <img src="https://coffeebros.com/cdn/shop/articles/latte-vs-flat-white-all-differences-explained.jpg?v=1676581028" alt="Café 2">
@@ -88,7 +99,68 @@
                     </div>
                 </div>
             </div>
+
+            <!---------------------------------------------------Productos------------------------------------------------------>
+           
+            <h2 class="text-4xl font-bold text-center mb-6 text-title mt-6">Productos</h2>
+            <div id="product-gallery" class="grid grid-cols-1 gap-6 px-4 md:grid-cols-3 sm:grid-cols-1">
+                <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
+                    <img src="https://estaticos-cdn.prensaiberica.es/clip/8867485c-39a8-4587-8f02-90d1d9820012_source-aspect-ratio_default_0.jpg" alt="Café Espresso" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-title font-semibold text-xl mb-2">Café Espresso</h3>
+                    <p class="text-botones font-bold mb-4">$5.99</p>
+                    <div class="flex space-x-4">
+                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
+                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
+                    <img src="https://coffeebros.com/cdn/shop/articles/latte-vs-flat-white-all-differences-explained.jpg?v=1676581028" alt="Café Latte" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-title font-semibold text-xl mb-2">Café Latte</h3>
+                    <p class="text-botones font-bold mb-4">$6.49</p>
+                    <div class="flex space-x-4">
+                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
+                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
+                    <img src="https://www.coffeeness.de/wp-content/uploads/2024/10/cafe-bombon-spanish-coffee.jpg" alt="Café Mocha" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-title font-semibold text-xl mb-2">Café Mocha</h3>
+                    <p class="text-botones font-bold mb-4">$6.99</p>
+                    <div class="flex space-x-4">
+                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
+                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
+                    <img src="https://cdn.shopify.com/s/files/1/0275/6089/4409/products/coffee-beans-1_1024x1024.jpg?v=1669399277" alt="Café Americano" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-title font-semibold text-xl mb-2">Café Americano</h3>
+                    <p class="text-botones font-bold mb-4">$4.99</p>
+                    <div class="flex space-x-4">
+                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
+                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
+                    <img src="https://cdn.shopify.com/s/files/1/0275/6089/4409/products/coffee-cup-1_1024x1024.jpg?v=1669399277" alt="Café Capuchino" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-title font-semibold text-xl mb-2">Café Capuchino</h3>
+                    <p class="text-botones font-bold mb-4">$6.29</p>
+                    <div class="flex space-x-4">
+                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
+                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
+                    <img src="https://cdn.shopify.com/s/files/1/0275/6089/4409/products/coffee-cup-2_1024x1024.jpg?v=1669399277" alt="Café Macchiato" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-title font-semibold text-xl mb-2">Café Macchiato</h3>
+                    <p class="text-botones font-bold mb-4">$6.79</p>
+                    <div class="flex space-x-4">
+                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
+                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
         </section>
+
 
 
     
