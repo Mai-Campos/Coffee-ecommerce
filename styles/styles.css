@@ -6,7 +6,9 @@
     --color-headerDark:#C7C0B7;
     --color-title:#3A230A;
     --color-botones: #6B4226;
+    --color-botonesLight: #784829;
     --color-secundario: #F5F2F0;
+    --breakpoint-xs:890px;
 }
 
 @layer components{
@@ -16,6 +18,7 @@
     }
 
     .mobile-menu {
+       
         background-color: #E9E1D8; /* var(--color-header) */
         width: 100%;
         position: absolute;

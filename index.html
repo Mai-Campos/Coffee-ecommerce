@@ -11,45 +11,52 @@
 </head>
 <body class="bg-white">
    
-        <header class="bg-header p-2.5  shadow-lg/10">
-            <nav class=" flex flex-row items-center justify-between">
-                <div class="shop-name flex-1">
-                    <h1 class="Title font-serif text-6xl text-title">Coffe first</h1>
-                </div>
-
-                <button id="menu-toggle" class="md:hidden block p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-label="Toggle menu">
-                    <svg class="h-10 w-10 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-
-                <ul id="navbar-menu" class="navbar list-none justify-end space-x-6 md:flex hidden text-2xl ">
-                    <li ><a href="#seccion-login" class="bg-white p-3 rounded-2xl hover:bg-gray-100">Iniciar Sesion</a></li>
-                    <li ><a href="#seccion-principal" class="hover:underline">Principal</a></li>
-                    <li><a href="#seccion-contacto" class="hover:underline">Contáctanos</a></li>
-                    <li><a href="#seccion-contacto" class="hover:underline">Blog</a></li>
-                    <li class="carrito pr-5" >
-                        <a href="#carrito"  >
-    <svg  xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
-                                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
-                            </svg>
-                        </a>
-                    </li> 
-                </ul>
-            </nav>
-
-            <div id="mobile-menu" class="md:hidden hidden bg-header p-4 text-2xl  ">
-                <ul class="list-none space-y-4">
-                    
-                    <li><a href="#seccion-principal" class="block">Principal</a></li>
-                    <li><a href="#seccion-contacto" class="block">Contáctanos</a></li>
-                    <li ><a href="#seccion-login" class="bg-white p-3 rounded-2xl hover:bg-gray-100 float-end">Iniciar Sesion</a></li>
-    <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-cart4 h-10 w-14" viewBox="0 0 16 16">
-                        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
-                    </svg>
-                </ul>
+    <header class="bg-header p-2.5 shadow-lg/10 ">
+        <nav class="flex flex-row items-center justify-between">
+            <div class="shop-name flex-1">
+                <h1 class="Title font-serif text-6xl text-title">Coffe first</h1>
             </div>
-        </header>
+
+            <button id="menu-toggle" class=" xs:hidden block p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-label="Toggle menu">
+                <svg class="h-10 w-10 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <ul id="navbar-menu" class="navbar list-none justify-end space-x-6 xs:flex hidden text-2xl ">
+                <li><a href="#seccion-login" class="bg-white p-3 rounded-2xl hover:bg-gray-100">Iniciar Sesion</a></li>
+                <li><a href="#seccion-principal" class="hover:underline">Principal</a></li>
+                <li><a href="#seccion-contacto" class="hover:underline">Contáctanos</a></li>
+                <li><a href="#seccion-contacto" class="hover:underline">Blog</a></li>
+                <li class="carrito pr-5 relative">
+                    <a href="#carrito">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                        </svg>
+                        <span class="cart-count absolute top-0 right-0 bg-botones text-white rounded-full text-xs w-5 h-5 flex items-center justify-center font-bold">0</span>
+                    </a>
+                </li> 
+            </ul>
+        </nav>
+
+        <div id="mobile-menu" class="xs:hidden hidden bg-header p-4 text-2xl">
+            <ul class="list-none space-y-4">
+                <li><a href="#seccion-principal" class="block">Principal</a></li>
+                <li><a href="#seccion-contacto" class="block">Contáctanos</a></li>
+                <li><a href="#seccion-blog" class="block">Blog</a></li>
+                
+                <li><a href="#seccion-login" class="bg-white p-3 rounded-2xl hover:bg-gray-100 float-end">Iniciar Sesion</a></li>
+                <li class="carrito relative">
+                    <a href="#carrito">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-cart4 h-10 w-14" viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                        </svg>
+                        <span class="cart-count absolute bottom-0 left-0 bg-botones text-white rounded-full text-xs w-5 h-5 flex items-center justify-center font-bold">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
 
         <section id="explanatory-container" class="max-w-5xl mx-auto my-10 px-4">
             <section id="explanatory-section" class="text-center overflow-hidden relative">
@@ -70,7 +77,8 @@
                                 <h3>Café Espresso</h3>
                                 <p>$5.99</p>
                                 <p>Un café intenso y aromático para los amantes del espresso.</p>
-                                <button>Ver detalles</button>
+                                <button class="btn-detalles">Ver detalles</button>
+                                <button class="btn-agregar">Agregar al carrito</button>
                             </div>
                         </div>
                     </div>
@@ -89,11 +97,12 @@
                     <div class="carousel-item m-auto w-full">
                         <div>
                             <img src="https://www.coffeeness.de/wp-content/uploads/2024/10/cafe-bombon-spanish-coffee.jpg" alt="Café 3">
-                            <div class="carousel-text-overlay">
+                            <div class="carousel-text-overlay"><button class="btn-detalles ">Ver detalles</button>
+                                <button class="btn-agregar">Agregar al carrito</button>
                                 <h3>Café Mocha</h3>
                                 <p>$6.99</p>
                                 <p>Delicioso café con chocolate para un toque dulce.</p>
-                                <button>Ver detalles</button>
+                                
                             </div>
                         </div>
                     </div>
@@ -109,8 +118,8 @@
                     <h3 class="text-title font-semibold text-xl mb-2">Café Espresso</h3>
                     <p class="text-botones font-bold mb-4">$5.99</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
-                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                        <button class="btn-detalles ">Ver detalles</button>
+                        <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
                 <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
@@ -118,8 +127,8 @@
                     <h3 class="text-title font-semibold text-xl mb-2">Café Latte</h3>
                     <p class="text-botones font-bold mb-4">$6.49</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
-                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                        <button class="btn-detalles ">Ver detalles</button>
+                        <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
                 <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
@@ -127,8 +136,8 @@
                     <h3 class="text-title font-semibold text-xl mb-2">Café Mocha</h3>
                     <p class="text-botones font-bold mb-4">$6.99</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
-                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                        <button class="btn-detalles ">Ver detalles</button>
+                        <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
                 <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
@@ -136,8 +145,8 @@
                     <h3 class="text-title font-semibold text-xl mb-2">Café Americano</h3>
                     <p class="text-botones font-bold mb-4">$4.99</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
-                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                        <button class="btn-detalles ">Ver detalles</button>
+                        <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
                 <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
@@ -145,8 +154,8 @@
                     <h3 class="text-title font-semibold text-xl mb-2">Café Capuchino</h3>
                     <p class="text-botones font-bold mb-4">$6.29</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
-                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                        <button class="btn-detalles ">Ver detalles</button>
+                        <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
                 <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
@@ -154,12 +163,58 @@
                     <h3 class="text-title font-semibold text-xl mb-2">Café Macchiato</h3>
                     <p class="text-botones font-bold mb-4">$6.79</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Ver detalles</button>
-                        <button class="btn-agregar bg-botones text-white px-4 py-2 rounded hover:bg-opacity-80">Agregar al carrito</button>
+                        <button class="btn-detalles">Ver detalles</button>
+                        <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Footer -->
+    <footer class="bg-header text-botones mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="footer-about">
+                <h3 class="text-title font-bold text-xl mb-4">Coffe First</h3>
+                <p class="text-sm">
+                    Somos una tienda en línea dedicada a ofrecer cafés de alta calidad para los amantes del buen café. 
+                    Disfruta de nuestra selección exclusiva y servicio profesional.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3 class="text-title font-bold text-xl mb-4">Enlaces</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#seccion-principal" class="hover:underline">Principal</a></li>
+                    <li><a href="#seccion-contacto" class="hover:underline">Contáctanos</a></li>
+                    <li><a href="#blog" class="hover:underline">Blog</a></li>
+                    <li><a href="#seccion-login" class="hover:underline">Iniciar Sesión</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3 class="text-title font-bold text-xl mb-4">Síguenos</h3>
+                <div class="flex space-x-4 text-2xl">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-botonesLigth">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 24 24">
+                            <path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54v-2.89h2.54v-2.205c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.772-1.63 1.562v1.878h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-botonesLigth">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 24 24">
+                            <path d="M23 3a10.9 10.9 0 01-3.14.86 4.48 4.48 0 001.98-2.48 9.14 9.14 0 01-2.88 1.1 4.52 4.52 0 00-7.7 4.13A12.84 12.84 0 013 4.89a4.52 4.52 0 001.4 6.04 4.48 4.48 0 01-2.05-.57v.06a4.52 4.52 0 003.63 4.43 4.52 4.52 0 01-2.04.08 4.52 4.52 0 004.22 3.14A9.05 9.05 0 012 19.54a12.8 12.8 0 006.92 2.03c8.3 0 12.85-6.88 12.85-12.85 0-.2 0-.42-.02-.63A9.22 9.22 0 0023 3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-botonesLigth">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 24 24">
+                            <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zm8.75 2.25a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-sm text-botones mt-6">
+            &copy; 2025 Coffe First. Todos los derechos reservados. <br>
+            Desarrollado por <b>Maikol Campos</b>
+        </div>
+    </footer>
 
 
 
