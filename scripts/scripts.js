@@ -34,14 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
     //-----------------------------------------------------------------------------------------------------------------------------------
 
     //------------------------------------------Script para el carrito de compras------------------------------------------------------
+
+    let count = 0;
+    let countCart = document.querySelectorAll('.cart-count')
     const addButtons = document.querySelectorAll('.btn-agregar');
     addButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const card = button.closest('.product-card');
-            const productName = card.querySelector('h3').textContent;
-            const productPrice = card.querySelector('p').textContent;
-            alert(`Producto agregado al carrito:\n${productName} - ${productPrice}`);
-            // Here you can add logic to actually add the product to a cart array or storage
+            
+           count++;
+           countCart.forEach(counted =>{
+            counted.innerHTML = count;
+           })
         });
     });
 
