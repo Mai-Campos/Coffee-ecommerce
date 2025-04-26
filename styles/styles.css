@@ -21,6 +21,11 @@
         position: relative;
     }
 
+    .menu-open {
+        padding-top: 230px;
+        }  
+
+
      .carousel-container {
         position: relative;
         overflow: hidden;

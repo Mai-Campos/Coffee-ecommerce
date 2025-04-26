@@ -2,10 +2,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-  
+    const informationContainer = document.getElementById("explanatory-container");
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
-      console.log("hola");
+      document.body.classList.toggle('menu-open');
     });
 
     //-------------------------------------------------------------------------------------------------------------------------
