@@ -8,6 +8,7 @@
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-600: oklch(57.7% 0.245 27.325);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-white: #fff;
@@ -238,6 +239,9 @@
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
   }
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
+  }
   .mt-12 {
     margin-top: calc(var(--spacing) * 12);
   }
@@ -306,6 +310,9 @@
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .cursor-pointer {
+    cursor: pointer;
   }
   .list-none {
     list-style-type: none;
@@ -470,6 +477,9 @@
   }
   .text-gray-800 {
     color: var(--color-gray-800);
+  }
+  .text-red-600 {
+    color: var(--color-red-600);
   }
   .text-title {
     color: var(--color-title);
@@ -683,7 +693,7 @@
     margin-bottom: 1rem;
     font-size: 1.125rem;
   }
-  .product-card .btn-detalles, .product-card .btn-agregar {
+  .btn-detalles, .btn-agregar, .btn-atras {
     background-color: var(--color-botones);
     color: white;
     padding: 0.5rem 1rem;
@@ -692,13 +702,13 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  .product-card .btn-detalles:hover, .product-card .btn-agregar:hover {
+  .btn-detalles:hover, .btn-agregar:hover, .btn-atras:hover {
     background-color: #8B5E3C;
   }
-  .product-card .btn-detalles {
+  .btn-detalles {
     margin-right: 0.5rem;
   }
-  .product-card .btn-agregar {
+  .btn-agregar {
     margin-left: 0.5rem;
   }
   .product-card .flex {
@@ -718,6 +728,64 @@
   }
   .slide-in-right {
     animation: slideInRight 0.5s forwards;
+  }
+  #details-container {
+    max-width: 1200px;
+    margin: 6rem auto 2rem;
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  #left-section {
+    flex: 1 1 300px;
+    max-width: 400px;
+    position: relative;
+  }
+  #left-section img {
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    float: left;
+    margin-right: 1rem;
+  }
+  #coffee-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    color: #4a4a4a;
+  }
+  #coffee-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #a0522d;
+    margin: 0.5rem 0;
+  }
+  #coffee-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  #right-section {
+    flex: 2 1 500px;
+    background-color: #e9e1d8;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    overflow-y: auto;
+    max-height: 600px;
+  }
+  #recipe-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #4a4a4a;
+  }
+  #recipe-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    white-space: pre-wrap;
   }
   @keyframes slideOutLeft {
     from {

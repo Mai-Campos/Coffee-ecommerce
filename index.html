@@ -31,7 +31,7 @@
 
             <ul id="navbar-menu" class="navbar list-none justify-end space-x-6 xs:flex hidden text-2xl ">
                 <li><a href="#seccion-login" class="bg-white p-3 rounded-2xl hover:bg-gray-100" title="Iniciar Sesion">Iniciar Sesion</a></li>
-                <li><a href="#seccion-principal" class="hover:underline" title="Pagina principal">Principal</a></li>
+                <li><a href="index.html" class="hover:underline" title="Pagina principal">Principal</a></li>
                 <li><a href="#seccion-contacto" class="hover:underline" title="Seccion contactanos">Contáctanos</a></li>
                 <li><a href="#seccion-contacto" class="hover:underline" title="Pagina de Blogs">Blog</a></li>
                 <li class="carrito pr-7 relative" title="Ver el carrito">
@@ -49,7 +49,7 @@
 
         <div id="mobile-menu" class="xs:hidden hidden bg-header p-4 text-2xl w-full absolute z-50 left-0 top-[100%]">
             <ul class="list-none space-y-4">
-                <li><a href="#seccion-principal" class="block">Principal</a></li>
+                <li><a href="index.html" class="block">Principal</a></li>
                 <li><a href="#seccion-contacto" class="block">Contáctanos</a></li>
                 <li><a href="#seccion-blog" class="block">Blog</a></li>
                 
@@ -82,12 +82,12 @@
                 <div class="carousel-track flex transition-transform duration-500 ease-in-out w-full">
                     <div class="carousel-item m-auto w-full">
                         <div class="w-full">
-                            <img src="ChatGPT Image 20 abr 2025, 18_27_06.png" alt="Café 1">
+                            <img src="img/Expresso.png" alt="Café 1">
                             <div class="carousel-text-overlay">
                                 <h3>Café Espresso</h3>
                                 <p>$5.99</p>
                                 <p>Un café intenso y aromático para los amantes del espresso.</p>
-                                <button class="btn-detalles">Ver detalles</button>
+                                <a href="details-coffe.html?coffee=latte" class="btn-detalles inline-block cursor-pointer">Ver detalles</a>
                                 <button class="btn-agregar">Agregar al carrito</button>
                             </div>
                         </div>
@@ -95,25 +95,25 @@
                     
                     <div class="carousel-item m-auto w-full ">
                         <div>
-                            <img src="https://coffeebros.com/cdn/shop/articles/latte-vs-flat-white-all-differences-explained.jpg?v=1676581028" alt="Café 2">
+                            <img src="img/Latte.png" alt="Café 2">
                             <div class="carousel-text-overlay">
                                 <h3>Café Latte</h3>
                                 <p>$6.49</p>
                                 <p>Suave y cremoso, perfecto para disfrutar en cualquier momento.</p>
-                                <button class="btn-detalles">Ver detalles</button>
+                                <a href="details-coffe.html?coffee=latte" class="btn-detalles inline-block cursor-pointer">Ver detalles</a>
                                 <button class="btn-agregar">Agregar al carrito</button>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item m-auto w-full">
                         <div>
-                            <img src="https://www.coffeeness.de/wp-content/uploads/2024/10/cafe-bombon-spanish-coffee.jpg" alt="Café 3">
+                            <img src="img/Mocha.png" alt="Café 3">
                             <div class="carousel-text-overlay">
                                 <h3>Café Mocha</h3>
                                 <p>$6.99</p>
                                 <p>Delicioso café con chocolate para un toque dulce.</p>
-                                <button class="btn-detalles">Ver detalles</button>
-                                <button class="btn-agregar">Agregar al carrito</button>
+                        <a href="details-coffe.html?coffee=mocha" class="btn-detalles inline-block cursor-pointer">Ver detalles</a>
+                        <button class="btn-agregar">Agregar al carrito</button>
                             </div>
                         </div>
                     </div>
@@ -125,56 +125,57 @@
             <h2 class="text-4xl font-bold text-center mb-6 text-title mt-6">Productos</h2>
             <div id="product-gallery" class="grid grid-cols-1 gap-6 px-4 md:grid-cols-3 sm:grid-cols-1">
                 <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
-                    <img src="ChatGPT Image 20 abr 2025, 18_27_06.png" alt="Café Espresso" class="w-full h-48 object-cover rounded-md mb-4">
+                    <img src="img/Expresso.png" alt="Café Espresso" class="w-full h-48 object-cover rounded-md mb-4">
                     <h3 class="text-title font-semibold text-xl mb-2">Café Espresso</h3>
                     <p class="text-botones font-bold mb-4">$5.99</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles ">Ver detalles</button>
+                        <a href="details-coffe.html?coffee=espresso" class="btn-detalles inline-block cursor-pointer">Ver detalles</a>
                         <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
                 <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
-                    <img src="https://coffeebros.com/cdn/shop/articles/latte-vs-flat-white-all-differences-explained.jpg?v=1676581028" alt="Café Latte" class="w-full h-48 object-cover rounded-md mb-4">
+                    <img src="img/Latte.png" alt="Café Latte" class="w-full h-48 object-cover rounded-md mb-4">
                     <h3 class="text-title font-semibold text-xl mb-2">Café Latte</h3>
                     <p class="text-botones font-bold mb-4">$6.49</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles ">Ver detalles</button>
+                        <a href="details-coffe.html?coffee=latte" class="btn-detalles inline-block cursor-pointer">Ver detalles</a>
                         <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
                 <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
-                    <img src="https://www.coffeeness.de/wp-content/uploads/2024/10/cafe-bombon-spanish-coffee.jpg" alt="Café Mocha" class="w-full h-48 object-cover rounded-md mb-4">
+                    <img src="img/Mocha.png" alt="Café Mocha" class="w-full h-48 object-cover rounded-md mb-4">
                     <h3 class="text-title font-semibold text-xl mb-2">Café Mocha</h3>
                     <p class="text-botones font-bold mb-4">$6.99</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles ">Ver detalles</button>
+                        <a href="details-coffe.html?coffee=mocha" class="btn-detalles inline-block cursor-pointer">Ver detalles</a>
                         <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
                 <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
-                    <img src="https://cdn.shopify.com/s/files/1/0275/6089/4409/products/coffee-beans-1_1024x1024.jpg?v=1669399277" alt="Café Americano" class="w-full h-48 object-cover rounded-md mb-4">
+                    <img src="img/Americano.png" alt="Café Americano" class="w-full h-48 object-cover rounded-md mb-4">
                     <h3 class="text-title font-semibold text-xl mb-2">Café Americano</h3>
                     <p class="text-botones font-bold mb-4">$4.99</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles ">Ver detalles</button>
+                        <a href="details-coffe.html?coffee=americano" class="btn-detalles inline-block cursor-pointer">Ver detalles</a>
                         <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
                 <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
                     <img src="https://cdn.shopify.com/s/files/1/0275/6089/4409/products/coffee-cup-1_1024x1024.jpg?v=1669399277" alt="Café Capuchino" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-title font-semibold text-xl mb-2">Café Capuchino</h3>
+                    <h3 class="text-title font-semibold text-xl mb-2">Café Frapuccino</h3>
                     <p class="text-botones font-bold mb-4">$6.29</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles ">Ver detalles</button>
+                        <a href="details-coffe.html?coffee=frapuccino" class="btn-detalles inline-block cursor-pointer">Ver detalles</a>
                         <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
                 <div class="product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center">
-                    <img src="https://cdn.shopify.com/s/files/1/0275/6089/4409/products/coffee-cup-2_1024x1024.jpg?v=1669399277" alt="Café Macchiato" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-title font-semibold text-xl mb-2">Café Macchiato</h3>
+                    <img src="img/Coffe First.png" alt="Café Macchiato" class="w-full h-48 object-cover rounded-md mb-4">
+
+                    <h3 class="text-title font-semibold text-xl mb-2">Café Especial Coffe First</h3>
                     <p class="text-botones font-bold mb-4">$6.79</p>
                     <div class="flex space-x-4">
-                        <button class="btn-detalles">Ver detalles</button>
+                        <a href="details-coffe.html?coffee=coffeFirst" class="btn-detalles inline-block cursor-pointer">Ver detalles</a>
                         <button class="btn-agregar">Agregar al carrito</button>
                     </div>
                 </div>
@@ -227,7 +228,7 @@
         </div>
     </footer>
 
-
+    
     <script src="scripts/scripts.js"></script>
 </body>
 </html>
