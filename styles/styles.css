@@ -48,9 +48,9 @@
     
     .carousel-item img {
         width: 100%;
-        height: 500px;
-        object-fit: cover;
+        max-height: 750px;
         border-radius: 15px;
+        background-color: #fff;
     }
     
     .carousel-text-overlay {
@@ -133,7 +133,8 @@
 
    .btn-detalles, 
    .btn-agregar, 
-   .btn-atras  {
+   .btn-atras,
+   .btn  {
         background-color: var(--color-botones);
         color: white;
         padding: 0.5rem 1rem;
@@ -145,7 +146,8 @@
 
     .btn-detalles:hover,
     .btn-agregar:hover,
-    .btn-atras:hover {
+    .btn-atras:hover,
+    .btn {
         background-color: #8B5E3C;
     }
 
