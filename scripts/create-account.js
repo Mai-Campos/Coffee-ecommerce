@@ -45,6 +45,70 @@ toggleConfirmPassword.addEventListener('click', function () {
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
+//---------------------------------------------------------------Validaciones------------------------------------------------------------------------
+
+
+const userNameInput = document.getElementById("username");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const confirmPasswordInput = document.getElementById("confirm-password");
+const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const passworReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*.?&])([A-Za\d$@$!%*.?%]|[^ ]){8,15}$/;
+let valid = true;
+
+//Nombre de usuario
+userNameInput.addEventListener("input",()=>{
+    if(userNameInput.value.length < 3 || userNameInput.value.length > 15){
+        document.getElementById("usernameError").classList.remove("hidden");
+        valid = false;
+    }else{
+        document.getElementById("usernameError").classList.add("hidden");
+        valid = true;
+    }
+});
+
+//Email
+emailInput.addEventListener("input",()=>{
+
+    if(emailInput.value.length < 5 || !emailInput.value.match(emailReg)){
+        document.getElementById("emailError").classList.remove("hidden");
+        valid = false;
+    }else{
+        document.getElementById("emailError").classList.add("hidden");
+        valid = true;
+    }
+});
+
+//Password
+passwordInput.addEventListener("input",()=>{
+
+    if(!passwordInput.value.match(passworReg)){
+        document.getElementById("passwordError").classList.remove("hidden");
+        valid = false;
+    }else{
+        document.getElementById("passwordError").classList.add("hidden");
+        valid = true;
+    }
+});
+
+//Confirmacion del password
+confirmPasswordInput.addEventListener("input", ()=>{
+
+   if(confirmPasswordInput.value != passwordInput.value){
+    document.getElementById("confirmPasswordError").classList.remove("hidden");
+    valid = false;
+   }else{
+    document.getElementById("confirmPasswordError").classList.add("hidden");
+    valid = true;
+} 
+});
+
+
+
+
+
+
+
 
 
 
