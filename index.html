@@ -30,8 +30,8 @@
             </button>
 
             <ul id="navbar-menu" class="navbar list-none justify-end space-x-6 xs:flex hidden text-2xl ">
-                <li><a href="#seccion-login" class="bg-white p-3 rounded-2xl hover:bg-gray-100" title="Iniciar Sesion">Iniciar Sesion</a></li>
-                <li><a href="index.html" class="hover:underline" title="Pagina principal">Principal</a></li>
+                <li><a href="login.html" class="bg-white p-3 rounded-2xl hover:bg-gray-100" title="Iniciar Sesion">Iniciar Sesion</a></li>
+                <li><a aria-disabled="true" style="pointer-events: none; color: gray;" title="Seccion contactanos">Principal</a></li>
                 <li><a href="contact-us.html" class="hover:underline" title="Seccion contactanos">Contáctanos</a></li>
                 <li><a href="#seccion-contacto" class="hover:underline" title="Pagina de Blogs">Blog</a></li>
                 <li class="carrito pr-7 relative" title="Ver el carrito">
@@ -49,11 +49,11 @@
 
         <div id="mobile-menu" class="xs:hidden hidden bg-header p-4 text-2xl w-full absolute z-50 left-0 top-[100%]">
             <ul class="list-none space-y-4">
-                <li><a href="index.html" class="block">Principal</a></li>
+                <li><a aria-disabled="true" style="pointer-events: none; color: gray;" title="Seccion contactanos">Principal</a></li>
                 <li><a href="contact-us.html" class="block">Contáctanos</a></li>
                 <li><a href="#seccion-blog" class="block">Blog</a></li>
                 
-                <li><a href="#seccion-login" class="bg-white p-3 rounded-2xl hover:bg-gray-100 float-end">Iniciar Sesion</a></li>
+                <li><a href="login.html" class="bg-white p-3 rounded-2xl hover:bg-gray-100 float-end">Iniciar Sesion</a></li>
                 <li class="carrito relative">
                     <a href="#carrito">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-cart4 h-10 w-14" viewBox="0 0 16 16">
@@ -198,7 +198,7 @@
                     <li><a href="index.html" class="hover:underline">Principal</a></li>
                     <li><a href="contact-us.html" class="hover:underline">Contáctanos</a></li>
                     <li><a href="#blog" class="hover:underline">Blog</a></li>
-                    <li><a href="#seccion-login" class="hover:underline">Iniciar Sesión</a></li>
+                    <li><a href="login.html" class="hover:underline">Iniciar Sesión</a></li>
                 </ul>
             </div>
             <div class="footer-social">
@@ -230,5 +230,6 @@
 
     
     <script src="scripts/scripts.js"></script>
+    <script src="scripts/principal.js"></script>
 </body>
 </html>

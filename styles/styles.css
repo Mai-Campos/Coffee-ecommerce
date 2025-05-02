@@ -269,5 +269,15 @@
         }
     }
 
+    .btn-gradient-slide {
+        background: linear-gradient(to right, #6B4226 50%, #8B5E3C 50%);
+        background-size: 200% 100%;
+        background-position: left bottom;
+        transition: background-position 0.7s ease;
+    }
+
+    .btn-gradient-slide:hover {
+        background-position: right bottom;
+    }
 }
 
