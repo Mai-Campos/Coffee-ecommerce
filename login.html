@@ -74,19 +74,21 @@
             <form action="#" method="POST" class="space-y-6">
                 <div>
                     <label for="username" class="block mb-2 font-semibold text-title">Nombre de usuario</label>
-                    <input type="text" id="username" name="username" placeholder="Ingresa tu nombre de usuario" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-botones" />
+                    <input type="text" id="username" name="username" placeholder="Ingresa tu nombre de usuario" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-botones pr-10 " />
                     <p id="usernameError" class="text-red-600 text-sm mt-1 hidden">El campo username debe tener entre 3 y 15 caracteres</p>
 
                 </div>
-                <div class="relative">
-                    <label for="password" class="block mb-2 font-semibold text-title">Contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-botones pr-10" />
-                    <button type="button" id="togglePassword" class="absolute top-[70%] right-3 transform -translate-y-1/2 flex items-center cursor-pointer text-gray-500 hover:text-botones focus:outline-none" aria-label="Mostrar contraseña">
-                        <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                        </svg>
-                    </button>
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label for="password" class="font-semibold text-title">Contraseña</label>
+                        <button type="button" id="togglePassword" class="flex items-center cursor-pointer text-gray-500 hover:text-botones focus:outline-none" aria-label="Mostrar contraseña">
+                            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-botones" />
                     <p id="passwordError" class="text-red-600 text-sm mt-1 hidden">La contrseña debe tener entre 8 y 15 caracteres, letras mayusculas y minusculas, numeros, caracteres especiales y sin espacios en blanco</p>
                 </div>
                 <button type="submit" id="send-btn" class="btn btn-gradient-slide w-full py-3 font-bold text-white rounded-lg">Iniciar Sesión</button>

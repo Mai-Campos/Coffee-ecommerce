@@ -40,9 +40,11 @@ sendBtn.addEventListener("click",(e)=>{
     //Password
     if(!passwordInput.value.match(passworReg)){
         document.getElementById("passwordError").classList.remove("hidden");
+        /* document.getElementById("togglePassword").classList.add("hidden"); */
         return;
     }else{
         document.getElementById("passwordError").classList.add("hidden");
+        /* document.getElementById("togglePassword").classList.remove("hidden"); */
     }
 
     //Logica para loguearse
