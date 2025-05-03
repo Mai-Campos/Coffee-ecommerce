@@ -16,3 +16,36 @@ togglePassword.addEventListener('click', function () {
             '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18" />';
     }
 });
+
+//------------------------------------------------------Validaciones para login---------------------------------------------------------------------
+
+const sendBtn = document.getElementById("send-btn");
+const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const passworReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*.?&])([A-Za\d$@$!%*.?%]|[^ ]){8,15}$/;
+
+sendBtn.addEventListener("click",(e)=>{
+    e.preventDefault();
+    const userNameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    //Nombre de usuario
+    if(userNameInput.value.length < 3 || userNameInput.value.length > 15){
+        document.getElementById("usernameError").classList.remove("hidden");
+    return;
+    
+    }else{
+        document.getElementById("usernameError").classList.add("hidden");
+    }
+
+    //Password
+    if(!passwordInput.value.match(passworReg)){
+        document.getElementById("passwordError").classList.remove("hidden");
+        return;
+    }else{
+        document.getElementById("passwordError").classList.add("hidden");
+    }
+
+    //Logica para loguearse
+    alert("Confirmado");
+});
+ 

@@ -60,7 +60,7 @@ sendBtn.addEventListener("click",(e)=>{
    const confirmPasswordInput = document.getElementById("confirm-password");
 
 
-   
+   //Nombre de usuario
    if(userNameInput.value.length < 3 || userNameInput.value.length > 15){
         document.getElementById("usernameError").classList.remove("hidden");
     return;
@@ -69,6 +69,7 @@ sendBtn.addEventListener("click",(e)=>{
 
     }
     
+    //Email
     if(emailInput.value.length < 5 || !emailInput.value.match(emailReg)){
         document.getElementById("emailError").classList.remove("hidden");
         return;
@@ -77,6 +78,7 @@ sendBtn.addEventListener("click",(e)=>{
 
     }
 
+    //Password
     if(!passwordInput.value.match(passworReg)){
         document.getElementById("passwordError").classList.remove("hidden");
         return;
@@ -85,6 +87,7 @@ sendBtn.addEventListener("click",(e)=>{
 
     }
 
+    //Repetir password
     if(confirmPasswordInput.value != passwordInput.value){
         document.getElementById("confirmPasswordError").classList.remove("hidden");
         return;
@@ -93,6 +96,7 @@ sendBtn.addEventListener("click",(e)=>{
 
        }
 
+       //Logica para crear el usuario
        alert("Confirmado");
 });
 
@@ -100,7 +104,7 @@ sendBtn.addEventListener("click",(e)=>{
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-//En pruebas
+
 
 
 

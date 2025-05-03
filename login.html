@@ -75,6 +75,8 @@
                 <div>
                     <label for="username" class="block mb-2 font-semibold text-title">Nombre de usuario</label>
                     <input type="text" id="username" name="username" placeholder="Ingresa tu nombre de usuario" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-botones" />
+                    <p id="usernameError" class="text-red-600 text-sm mt-1 hidden">El campo username debe tener entre 3 y 15 caracteres</p>
+
                 </div>
                 <div class="relative">
                     <label for="password" class="block mb-2 font-semibold text-title">Contraseña</label>
@@ -85,8 +87,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                         </svg>
                     </button>
+                    <p id="passwordError" class="text-red-600 text-sm mt-1 hidden">La contrseña debe tener entre 8 y 15 caracteres, letras mayusculas y minusculas, numeros, caracteres especiales y sin espacios en blanco</p>
                 </div>
-                <button type="submit" class="btn btn-gradient-slide w-full py-3 font-bold text-white rounded-lg">Iniciar Sesión</button>
+                <button type="submit" id="send-btn" class="btn btn-gradient-slide w-full py-3 font-bold text-white rounded-lg">Iniciar Sesión</button>
             </form>
             <p class="mt-4 text-center text-sm text-gray-600">
                 ¿No tienes una cuenta? <a href="create-account.html" class="text-botones hover:underline font-semibold">Crear una</a>
