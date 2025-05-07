@@ -34,3 +34,16 @@ document.querySelectorAll('.subtract-btn').forEach(button => {
 
 //LLamado de la funcion para actualizar el total
 updateTotal();
+
+
+//Script para elboton realizar pedido
+const btnBuy = document.getElementById("btn-buy");
+
+btnBuy.addEventListener("click",()=>{
+   const confirmation = confirm("Desea realizar la compra?");
+    if(confirmation){
+        alert("Pedido realizado correctamente");
+    }else{
+        alert("Pedido cancelado");
+    }
+});
