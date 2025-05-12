@@ -28,11 +28,11 @@ const coffeeData = {
         image: "img/Americano.png",
         recipe: `1. Se prepara un espresso.\n2. Se añade agua caliente al espresso.`
     },
-    Frapuccino: {
+    frapuccino: {
         name: "Frapuccino",
         price: "$6.29",
         description: "Café espresso con leche espumada y un toque de canela.",
-        image: "https://cdn.shopify.com/s/files/1/0275/6089/4409/products/coffee-cup-1_1024x1024.jpg?v=1669399277",
+        image: "img/frapuccino.png",
         recipe: `1. Prepara un espresso.\n2. Calienta y espuma la leche.\n3. Vierte la leche espumada sobre el espresso.\n4. Espolvorea canela encima.`
     },
     coffeFirst: {
