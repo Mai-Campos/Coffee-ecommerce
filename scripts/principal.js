@@ -21,7 +21,7 @@ setInterval(slideCarousel, 5000);
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 
- // Dynamic heading for explanatory section with sliding animation
+ 
  const headings = [
     "Un Café Primero",
     "Calidad y Sabor en Cada Taza",
@@ -32,10 +32,10 @@ let currentIndex = 0;
 const dynamicHeading = document.getElementById('dynamic-heading');
 
 function slideToNextHeading() {
-    // Add slide out class
+   
     dynamicHeading.classList.add('slide-out-left');
 
-    // After animation ends, change text and slide in
+    
     dynamicHeading.addEventListener('animationend', function handler() {
         dynamicHeading.removeEventListener('animationend', handler);
         dynamicHeading.classList.remove('slide-out-left');
@@ -50,8 +50,8 @@ function slideToNextHeading() {
     });
 }
 
-// Initialize with first heading
+
 dynamicHeading.textContent = headings[currentIndex];
 
-// Change heading every 5 seconds with sliding animation
+
 setInterval(slideToNextHeading, 5000);

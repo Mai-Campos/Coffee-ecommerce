@@ -279,5 +279,110 @@
     .btn-gradient-slide:hover {
         background-position: right bottom;
     }
+
+     /*Estilos para la vista del panel de administracion de cafes*/
+      #coffee-table-body tr:nth-child(odd) {
+            background-color: #d7c4a3;
+        }
+        #coffee-table-body tr:nth-child(even) {
+            background-color: #6f4e37;
+            color: white;
+        }
+        #coffee-table-body tr:hover {
+            background-color: #a67c52 !important;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        /* Style action buttons */
+        .edit-btn {
+            background-color: #3b82f6; /* blue-500 */
+            transition: background-color 0.3s ease;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        .edit-btn:hover {
+            background-color: #2563eb; /* blue-600 */
+        }
+        .delete-btn {
+            background-color: #ef4444; /* red-500 */
+            transition: background-color 0.3s ease;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            color: white;
+            cursor: pointer;
+            border: none;
+            margin-left: 0.5rem;
+        }
+        .delete-btn:hover {
+            background-color: #dc2626; /* red-600 */
+        }
+        /* Thumbnail image style */
+        .thumbnail-img {
+            height: 64px;
+            width: 64px;
+            object-fit: contain;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: transform 0.2s ease;
+        }
+        .thumbnail-img:hover {
+            transform: scale(1.1);
+        }
+
+         /* Responsive improvements */
+        @media (max-width: 640px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                display: none;
+            }
+            tbody tr {
+                margin-bottom: 1rem;
+                border: 1px solid #ddd;
+                border-radius: 0.5rem;
+                padding: 0.5rem;
+            }
+            tbody td {
+                display: flex;
+                justify-content: space-between;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid #eee;
+            }
+            tbody td:last-child {
+                border-bottom: 0;
+            }
+            tbody td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #0c1872; 
+                margin-right: 30px;
+            }
+          
+            .edit-btn {
+                margin-right: 0.5rem;
+                align-self: center;
+            }
+            .delete-btn {
+                align-self: center;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1285px) {
+            
+            tbody td:last-child {
+                display: flex !important;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            .edit-btn, .delete-btn {
+               margin: 0 !important;
+                display: inline-block !important;
+                vertical-align: middle !important;
+            }
+        }
 }
 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin - Gestión de Cafés</title>
+    <link rel="stylesheet" href="styles/output.css" />
+</head>
+<body class="bg-white p-8 font-sans min-h-screen flex flex-col">
+       <!------------------------------Header----------------------------------------------------------------------------------->
+    <header class="bg-header p-2.5 shadow-lg/10 fixed w-full z-50 top-0 selection:bg-white left-0 right-0 w-screen">
+        <nav class="flex flex-row items-center justify-center">
+            <div class="shop-name">
+                <h1 class="Title font-serif text-6xl text-title" title="Nombre de la tienda">Coffe first</h1>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow mt-32 flex flex-col items-center">
+        <h2 class="text-xl font-semibold text-[#6f4e37] mb-6">Panel de Administración - Agregar Cafés</h2>
+        <form class="w-full max-w-lg bg-[#d7c4a3] p-6 rounded-lg shadow-md" id="add-coffee-form">
+            <div class="mb-4">
+                <label for="name" class="block text-[#6f4e37] font-semibold mb-2">Nombre</label>
+                <input type="text" id="name" name="name" class="w-full p-2 border border-[#6f4e37] rounded" required />
+                <p id="name-error" class="text-red-600 text-sm mt-1"></p>
+            </div>
+            <div class="mb-4">
+                <label for="price" class="block text-[#6f4e37] font-semibold mb-2">Precio</label>
+                <input type="number" id="price" name="price" step="0.01" min="0" class="w-full p-2 border border-[#6f4e37] rounded" required />
+                <p id="price-error" class="text-red-600 text-sm mt-1"></p>
+            </div>
+            <div class="mb-4">
+                <label for="photo" class="block text-[#6f4e37] font-semibold mb-2">Foto</label>
+                <input type="file" id="photo" name="photo" accept="image/*" class="w-full p-2 border border-[#6f4e37] rounded" required />
+                <p id="photo-error" class="text-red-600 text-sm mt-1"></p>
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block text-[#6f4e37] font-semibold mb-2">Descripción</label>
+                <textarea id="description" name="description" rows="3" class="w-full p-2 border border-[#6f4e37] rounded" required></textarea>
+                <p id="description-error" class="text-red-600 text-sm mt-1"></p>
+            </div>
+            <div class="mb-6">
+                <label for="recipe" class="block text-[#6f4e37] font-semibold mb-2">Receta de Preparación</label>
+                <textarea id="recipe" name="recipe" rows="4" class="w-full p-2 border border-[#6f4e37] rounded" required></textarea>
+                <p id="recipe-error" class="text-red-600 text-sm mt-1"></p>
+            </div>
+            <div class="flex justify-between">
+                <button type="submit" id="btn-add" class="bg-[#6f4e37] text-white px-6 py-2 rounded shadow hover:bg-[#5a3e2a] transition duration-300 cursor-pointer">Agregar Café</button>
+                <a href="admin.html" class="bg-gray-400 text-white px-6 py-2 rounded shadow hover:bg-gray-500 transition duration-300 cursor-pointer inline-block text-center">Volver Atrás</a>
+            </div>
+        </form>
+    </main>
+
+    <script src="scripts/add-coffee.js"></script>
+</body>
+</html>
