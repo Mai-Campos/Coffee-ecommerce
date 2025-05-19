@@ -28,7 +28,7 @@ let coffeeData = {
         name: "Frapuccino",
         price: "$6.29",
         description: "Café espresso con leche espumada y un toque de canela.",
-        image: "https://cdn.shopify.com/s/files/1/0275/6089/4409/products/coffee-cup-1_1024x1024.jpg?v=1669399277"
+        image: "img/frapuccino.png"
     },
     coffeFirst: {
         name: "Café Coffee First",
