@@ -1,3 +1,28 @@
+// --- Protección de acceso por rol ---
+const token = localStorage.getItem('token');
+
+fetch('http://localhost:8080/auth/me', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer ' + token
+  }
+})
+.then(res => {
+  if (!res.ok) {
+    window.location.href = '/login.html';
+    throw new Error('No autorizado');
+  }
+  return res.json();
+})
+.then(user => {
+  if (!user.roles.includes('ROLE_ADMIN')) {
+     window.location.href = '/unauthorized.html'; 
+  }
+})
+.catch(error => {
+  console.error(error);
+});
+
 
 //---------------------------Boton para ocultar y mostrar contraseña en campo password------------------------------------------------------
 
@@ -97,11 +122,33 @@ sendBtn.addEventListener("click",(e)=>{
        }
 
        //Logica para crear el usuario
-       alert("Confirmado");
+       fetch('http://localhost:8080/users/employees', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify({
+            username: userNameInput.value,
+            email: emailInput.value,
+            password: passwordInput.value
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('¡Cuenta creada correctamente!');
+            window.location.href = 'login.html';
+        } else {
+            return response.text().then(text => { throw new Error(text); });
+        }
+    })
+    .catch(error => {
+        alert('Error al crear la cuenta: ' + error.message);
+    });
 });
 
 
-//---------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------------------
 
 
 

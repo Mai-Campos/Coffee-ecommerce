@@ -1,3 +1,31 @@
+// --- Protección de acceso por rol ---
+const token = localStorage.getItem('token');
+
+fetch('http://localhost:8080/auth/me', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer ' + token
+  }
+})
+.then(res => {
+  if (!res.ok) {
+    window.location.href = '/login.html';
+    throw new Error('No autorizado');
+  }
+  return res.json();
+})
+.then(user => {
+  if (!user.roles.includes('ROLE_ADMIN') && !user.roles.includes('ROLE_EMPLOYEE')) {
+      window.location.href = '/unauthorized.html'; 
+     console.log(user.roles)
+  }
+})
+.catch(error => {
+  console.error(error);
+});
+
+
+
 // Coffee data copied from details-coffe.js for in-memory CRUD operations
 let coffeeData = {
     espresso: {

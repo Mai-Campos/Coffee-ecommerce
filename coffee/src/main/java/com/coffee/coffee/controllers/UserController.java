@@ -1,60 +1,52 @@
 package com.coffee.coffee.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 import com.coffee.coffee.models.User;
 import com.coffee.coffee.services.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-
+import com.coffee.util.dto.AuthenticationRequest;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserController {
- 
-   @Autowired
-     IUserService iUserService;
 
+    @Autowired
+    @Qualifier("clientService")
+    private IUserService clientService;
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<User> getUserById(@PathVariable Long userID) {
-       User user = iUserService.getUserById(userID);
-      if(user != null){
-          return ResponseEntity.notFound().build();
-      }else{
-        return ResponseEntity.ok(user);
-      }
-   }
+    @Autowired
+    @Qualifier("employeeService")
+    private IUserService employeeService;
 
-    @PostMapping("/client")
-    public ResponseEntity<User> createClient(@RequestBody User client) {
-        
-        return ResponseEntity.ok(iUserService.createClient(client));
-    }
-
-    @PostMapping("/employee")
-    public ResponseEntity<User> createAdmin(@RequestBody User employee) {
-       
-        return ResponseEntity.ok(iUserService.createEmployee(employee));
-    }
-
-    @DeleteMapping("/{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
-      if (iUserService.userExist(userId)) {
-            iUserService.deleteUser(userId);
-        return ResponseEntity.noContent().build();
-        } else {
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/employees")
+    public ResponseEntity<List<User>> getEmployees() {
+        List<User> users = employeeService.getUsers();
+        if (users.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-         
-      }
-        
-    }
-    
 
+        return ResponseEntity.ok(users);
+    }
+
+ 
+   
+    @PostMapping("/register")
+    public ResponseEntity<?> registerClient(@RequestBody AuthenticationRequest request) {
+        clientService.createUser(request.getUsername(),request.getPassword(), request.getEmail());
+        return ResponseEntity.ok("Cliente registrado correctamente");
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/employees")
+    public ResponseEntity<?> createEmployee(@RequestBody AuthenticationRequest request) {
+        employeeService.createUser(request.getUsername(), request.getEmail(), request.getPassword());
+        return ResponseEntity.ok("Empleado creado correctamente");
+    }
+}

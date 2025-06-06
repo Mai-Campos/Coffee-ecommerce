@@ -3,6 +3,7 @@ package com.coffee.coffee.controllers;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.coffee.coffee.models.Coffee;
@@ -48,11 +49,13 @@ public class CoffeeController {
         
     }
     
+    @PreAuthorize("hasAnyRole('ADMIN', 'EMPLOYEE')")
     @PostMapping("/")
     public ResponseEntity<Coffee> saveCoffee(@RequestBody Coffee coffee) {
         return ResponseEntity.ok(iCoffeeService.createCoffee(coffee));
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'EMPLOYEE')")
     @DeleteMapping("/{coffeeId}")
     public ResponseEntity<Void> deleteCoffee(@PathVariable Long id) {
 

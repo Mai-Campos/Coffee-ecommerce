@@ -31,6 +31,20 @@
 
             <ul id="navbar-menu" class="navbar list-none justify-end space-x-6 xs:flex hidden text-2xl ">
                 <li><a href="login.html" class="bg-white p-3 rounded-2xl hover:bg-gray-100" title="Iniciar Sesion">Iniciar Sesion</a></li>
+                <li id="user-menu" class="relative hidden">
+                    <button id="user-icon-btn" class="bg-white p-3 rounded-2xl hover:bg-gray-100 flex items-center" title="Usuario">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-7 h-7 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1112 21a9 9 0 01-6.879-3.196z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span id="user-name-short" class="font-semibold"></span>
+                    </button>
+                    <div id="user-modal" class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 p-4">
+                        <p class="text-gray-800 font-bold mb-2">Usuario autenticado:</p>
+                        <p id="user-full-name" class="text-gray-700"></p>
+                        <button id="logout-btn" class="mt-4 w-full bg-botones text-white py-2 rounded hover:bg-botonesLigth">Cerrar sesión</button>
+                    </div>
+                </li>
                 <li><a href="index.html" class="hover:underline">Principal</a></li>
                 <li><a href="contact-us.html" class="hover:underline" title="Seccion contactanos">Contáctanos</a></li>
                 <li class="carrito pr-7 relative" title="Ver el carrito">
@@ -48,9 +62,23 @@
 
         <div id="mobile-menu" class="xs:hidden hidden bg-header p-4 text-2xl w-full absolute z-50 left-0 top-[100%]">
             <ul class="list-none space-y-4">
-                <li><a class="block">Principal</a></li>
+                <li><a aria-disabled="true" style="pointer-events: none; color: gray;" title="Seccion contactanos">Principal</a></li>
                 <li><a href="contact-us.html" class="block">Contáctanos</a></li>
                 <li><a href="login.html" class="bg-white p-3 rounded-2xl hover:bg-gray-100 float-end">Iniciar Sesion</a></li>
+                <li id="user-menu-mobile" class="relative hidden">
+                    <button id="user-icon-btn-mobile" class="bg-white p-3 rounded-2xl hover:bg-gray-100 flex items-center" title="Usuario">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-7 h-7 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1112 21a9 9 0 01-6.879-3.196z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span id="user-name-short-mobile" class="font-semibold"></span>
+                    </button>
+                    <div id="user-modal-mobile" class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 p-4">
+                        <p class="text-gray-800 font-bold mb-2">Usuario autenticado:</p>
+                        <p id="user-full-name-mobile" class="text-gray-700"></p>
+                        <button id="logout-btn-mobile" class="mt-4 w-full bg-botones text-white py-2 rounded hover:bg-botonesLigth">Cerrar sesión</button>
+                    </div>
+                </li>
                 <li class="carrito relative">
                     <a href="cart]">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-cart4 h-10 w-14" viewBox="0 0 16 16">
@@ -163,5 +191,6 @@
     
     <script src="scripts/scripts.js"></script>
     <script src="scripts/create-account.js"></script>
+    <script src="scripts/user-modal.js"></script>
 </body>
 </html>

@@ -48,6 +48,30 @@ sendBtn.addEventListener("click",(e)=>{
     }
 
     //Logica para loguearse
-    alert("Confirmado");
+    fetch('http://localhost:8080/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: userNameInput.value,
+            password: passwordInput.value
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            return response.text().then(text => { throw new Error(text); });
+        }
+    })
+    .then(data => {
+        // Guarda el token JWT en localStorage o sessionStorage
+        localStorage.setItem('token', data.token);
+        alert('¡Login exitoso!');
+        window.location.href = 'index.html'; // Redirige a la página principal
+    })
+    .catch(error => {
+        alert('Error al iniciar sesión: ' + error.message);
+    });
 });
- 

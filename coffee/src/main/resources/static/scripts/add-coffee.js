@@ -1,3 +1,28 @@
+// --- Protección de acceso por rol ---
+const token = localStorage.getItem('token');
+
+fetch('http://localhost:8080/auth/me', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer ' + token
+  }
+})
+.then(res => {
+  if (!res.ok) {
+    window.location.href = '/login.html';
+    throw new Error('No autorizado');
+  }
+  return res.json();
+})
+.then(user => {
+  if (!user.roles.includes('ROLE_ADMIN') && !user.roles.includes("ROLE_EMPLOYEE")) {
+     window.location.href = '/unauthorized.html'; 
+  }
+})
+.catch(error => {
+  console.error(error);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("add-coffee-form");
 

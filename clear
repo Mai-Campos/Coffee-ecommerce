@@ -1,0 +1,119 @@
+[33mcommit 59fbd6fdf87e6fd0656d8f5b54da8e9593508041[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Mon May 19 16:31:32 2025 -0400
+
+    Agregamos backend para seguir trabajando
+
+[33mcommit bf25152f70d8142e4b8aa58292f748dc11b67dae[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Mon May 12 15:43:48 2025 -0400
+
+    Agregamos foto de cafe faltante
+
+[33mcommit e871cb99ead50847da0a13cb7d28b09297ca2e88[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Mon May 12 12:49:55 2025 -0400
+
+    Agrego la vista para administrar pedidos
+
+[33mcommit d949f5279ca3798d68e0acfb8b90c54458364e57[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Sun May 11 20:18:27 2025 -0400
+
+    Agrego las vistas de administrador para gestionar cafes
+
+[33mcommit 8e61cfb0cd10444e31bb1b826e87f0599377389a[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Wed May 7 11:25:57 2025 -0400
+
+    Boton para realizar pedido
+
+[33mcommit 918a1b1dab48ef69561996a9863fd1005b7de221[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Wed May 7 11:18:47 2025 -0400
+
+    Agrego la vista del carrito de compras
+
+[33mcommit 52bc3c18159496d520c210ecb3919c7590bf8770[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Mon May 5 20:26:06 2025 -0400
+
+    Agrego el footer y el header de la seccion cart
+
+[33mcommit 66289bfcae20d33cfa352f8a12ee14673b073c53[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Sat May 3 18:54:54 2025 -0400
+
+    Eliminacion de los enlaces para la seccion blog
+
+[33mcommit a8b3c327c8503651207ffebf61f61d47329da09f[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Sat May 3 18:02:49 2025 -0400
+
+    Arreglo en estilos tailwind
+
+[33mcommit e58145f861399231fcfa05c89cfc441598c6db63[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Sat May 3 17:34:52 2025 -0400
+
+    Scripts para validaciones en el login
+
+[33mcommit 1eba62a3c9499ea4a138f479d2af8782b02dc12e[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Sat May 3 17:23:23 2025 -0400
+
+    Arreglos en el script de validaciones en la sección para crear cuentas
+
+[33mcommit 0aadc8bf1c1787d99c328695ce1f8491821cf769[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Fri May 2 18:59:17 2025 -0400
+
+    Scripts para validaciones en el frontend
+
+[33mcommit 87ab9261625d3a685927c1ef2c030fcc06cf20f8[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Fri May 2 03:12:41 2025 -0400
+
+    Agrego las secciones para iniciar sesion y crear cuenta
+
+[33mcommit 955171d93e794ed9b050f986d2a8fa65ad8aed11[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Sun Apr 27 17:32:59 2025 -0400
+
+    Agrego la seccion de contactanos
+
+[33mcommit 2291d06544c570407fae53b1aa766108448dfb38[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Sat Apr 26 17:16:19 2025 -0400
+
+    Agrego la pagina de detalles de cafes con sus scrips
+
+[33mcommit d2fb6c766a3021bd7315395bfc6b0032dae8ce05[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Sat Apr 26 16:00:48 2025 -0400
+
+    Hacemos que el header sea fixed
+
+[33mcommit 56d6bdb05cc99da7377a44116788e46b302adbba[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Thu Apr 24 03:24:44 2025 -0400
+
+    Arreglos en los estilos, mejora del codigo y script para cambiar el contador del carrito
+
+[33mcommit c57933021982705eb61c48acee385514a2f6a451[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Mon Apr 21 03:53:00 2025 -0400
+
+    Guardando lo que pude salvar por si acaso
+
+[33mcommit 319f509c4c88d6e543df7e3e1f0f18c17f2ca336[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Sat Apr 19 17:02:26 2025 -0400
+
+    Trabajo en la pagina principal en las secciones de informacion y productos
+
+[33mcommit d512654b92b36f60d16b0658fc1b8f78bc23846a[m[33m ([m[1;32mMaikol[m[33m)[m
+Author: Maikol  Campos <Camposmaikol1@gmail.com>
+Date:   Sat Apr 19 14:23:42 2025 -0400
+
+    Se agrega el proyecto y se trabaja en el header y el carrusel

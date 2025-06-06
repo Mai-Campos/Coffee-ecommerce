@@ -1,4 +1,3 @@
-
 //---------------------------Boton para ocultar y mostrar contraseña en campo password------------------------------------------------------
 
 const togglePassword = document.querySelector('#togglePassword');
@@ -93,16 +92,34 @@ sendBtn.addEventListener("click",(e)=>{
         return;
        }else{
         document.getElementById("confirmPasswordError").classList.add("hidden");
-
        }
 
-       //Logica para crear el usuario
-       alert("Confirmado");
+    // Lógica para crear el usuario (petición al backend)
+    fetch('http://localhost:8080/users/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: userNameInput.value,
+            email: emailInput.value,
+            password: passwordInput.value
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('¡Cuenta creada correctamente!');
+            window.location.href = 'login.html';
+        } else {
+            return response.text().then(text => { throw new Error(text); });
+        }
+    })
+    .catch(error => {
+        alert('Error al crear la cuenta: ' + error.message);
+    });
 });
 
-
-//-------------------------------------------------------------------------------------------------------------------------------------------
-
+//---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -115,6 +132,7 @@ sendBtn.addEventListener("click",(e)=>{
 
 
 
-   
+
+
 
 
