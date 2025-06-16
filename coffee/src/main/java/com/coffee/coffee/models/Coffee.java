@@ -17,13 +17,13 @@ public class Coffee {
     private String name;
     private String description;
     private String imageUrl;
-    private double price;
+    private Double price;
     private String recipe;
 
     public Coffee() {
     }
 
-    public Coffee(Long id, String name, String description, String imageUrl, double price, String recipe) {
+    public Coffee(Long id, String name, String description, String imageUrl, Double price, String recipe) {
         this.id = id;
         this.name = name;
         this.description = description;
