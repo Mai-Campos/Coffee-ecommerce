@@ -1,4 +1,3 @@
-
 // Lógica para mostrar el usuario autenticado y el modal en el header y menú móvil
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -10,7 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const userFullName = document.getElementById('user-full-name');
     const logoutBtn = document.getElementById('logout-btn');
     const loginBtn = document.querySelector('a[href="login.html"]');
-  
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLoginLink = mobileMenu ? mobileMenu.querySelector('a[href="login.html"]') : null;
+    const mobileUserModal = document.getElementById('mobile-user-modal');
+    const mobileUserMenu = document.getElementById('mobile-user-menu');
+    const mobileUserName = document.getElementById('mobile-user-name');
+    const mobileLogoutBtn = document.getElementById('mobile-logout-btn');
+
+   
 
     // Obtener el nombre del usuario autenticado del localStorage (o token)
     const token = localStorage.getItem('token');
@@ -31,20 +37,32 @@ document.addEventListener('DOMContentLoaded', function () {
         userNameShort && (userNameShort.textContent = username);
         userFullName && (userFullName.textContent = username);
         loginBtn && loginBtn.classList.add('hidden');
+
+        mobileLoginLink && mobileLoginLink.classList.add('hidden');
+        mobileUserMenu && mobileUserMenu.classList.remove('hidden');
+        mobileUserName && (mobileUserName.textContent = username);
+
     } else {
         userMenu && userMenu.classList.add('hidden');
         loginBtn && loginBtn.classList.remove('hidden');
+
+        mobileLoginLink && mobileLoginLink.classList.remove('hidden');
+        mobileUserMenu && mobileUserMenu.classList.add('hidden');
+
     }
+
     if (userIconBtn) {
         userIconBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             userModal.classList.toggle('hidden');
         });
     }
+  
     document.addEventListener('click', function (e) {
         if (userModal && !userModal.classList.contains('hidden')) {
             userModal.classList.add('hidden');
         }
+       
     });
     userModal && userModal.addEventListener('click', function (e) { e.stopPropagation(); });
     logoutBtn && logoutBtn.addEventListener('click', function () {
@@ -55,5 +73,14 @@ document.addEventListener('DOMContentLoaded', function () {
        } 
     });
 
-   
+    mobileLogoutBtn && mobileLogoutBtn.addEventListener('click', function () {
+    const logout = confirm('¿Estás seguro de que quieres cerrar sesión?');
+    if (logout) {
+        localStorage.removeItem('token');
+        window.location.reload();
+    }
+});
+
+  
+ 
 });

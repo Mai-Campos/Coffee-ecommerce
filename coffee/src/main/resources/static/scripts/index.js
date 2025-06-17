@@ -21,7 +21,7 @@ setInterval(slideCarousel, 5000);
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 
- 
+
  const headings = [
     "Un Café Primero",
     "Calidad y Sabor en Cada Taza",
@@ -55,3 +55,38 @@ dynamicHeading.textContent = headings[currentIndex];
 
 
 setInterval(slideToNextHeading, 5000);
+
+
+// ---------------------------- Script para cargar tarjetas dinámicas de cafés ------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+    const coffeeContainer = document.getElementById("coffee-container");
+
+    fetch("http://localhost:8080/api/coffee")
+        .then(res => {
+            if (!res.ok) throw new Error("No se pudieron cargar los cafés.");
+            return res.json();
+        })
+        .then(coffees => {
+            coffees.forEach(coffee => {
+                const card = document.createElement("div");
+                card.className = "product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center max-w-sm";
+
+                card.innerHTML = `
+                    <img src="${coffee.imageUrl}" alt="${coffee.name}" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-title font-semibold text-xl mb-2">${coffee.name}</h3>
+                    <p class="text-botones font-bold mb-4">$${parseFloat(coffee.price).toFixed(2)}</p>
+                    <div class="flex space-x-4">
+                    <a href="details-coffee.html?id=${coffee.id}" class="btn-detalles inline-block cursor-pointer">Ver detalles</a>
+                        <button class="btn-agregar">Agregar al carrito</button>
+                    </div>
+                `;
+
+                coffeeContainer.appendChild(card);
+            });
+        })
+        .catch(err => {
+            console.error("Error al cargar los cafés:", err);
+        });
+
+      
+});

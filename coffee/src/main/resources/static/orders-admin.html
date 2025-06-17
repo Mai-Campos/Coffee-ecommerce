@@ -11,7 +11,7 @@
     <header class="bg-header p-2.5 shadow-lg/10 fixed  z-50 top-0 selection:bg-white left-0 right-0 w-screen">
         <nav class="flex flex-row items-center justify-center">
             <div class="shop-name">
-                <h1 class="Title font-serif text-6xl text-title" title="Nombre de la tienda">Coffe first</h1>
+                <h1 class="Title font-serif text-6xl text-title" title="Nombre de la tienda">Coffee first</h1>
             </div>
             <ul id="navbar-menu" class="navbar list-none justify-end space-x-6 xs:flex hidden text-2xl ">
                 <li><a href="login.html" class="bg-white p-3 rounded-2xl hover:bg-gray-100" title="Iniciar Sesion">Iniciar Sesion</a></li>
@@ -59,6 +59,14 @@
             <ul class="list-none space-y-4">
                 <li><a aria-disabled="true" style="pointer-events: none; color: gray;" title="Seccion contactanos">Principal</a></li>
                 <li><a href="contact-us.html" class="block">Contáctanos</a></li>
+                <li id="mobile-user-menu" class="relative hidden">
+                    <div id="mobile-user-info" class="bg-white rounded-xl p-4 shadow text-gray-900">
+                    <p class="font-bold mb-2">¡Hola, <span id="mobile-user-name">Usuario</span>!</p>
+                    <button id="mobile-logout-btn" class="w-full bg-botones text-white py-2 rounded hover:bg-botonesLigth">
+                        Cerrar sesión
+                    </button>
+                    </div>
+                </li>
                 <li><a href="login.html" class="bg-white p-3 rounded-2xl hover:bg-gray-100 float-end">Iniciar Sesion</a></li>
                 <li id="user-menu-mobile" class="relative hidden">
                     <button id="user-icon-btn-mobile" class="bg-white p-3 rounded-2xl hover:bg-gray-100 flex items-center" title="Usuario">

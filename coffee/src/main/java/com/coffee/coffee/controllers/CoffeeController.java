@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+
 
 @RestController
 @RequestMapping("/api/coffee")
@@ -29,7 +32,7 @@ public class CoffeeController {
     @Autowired
     private CloudinaryService cloudinaryService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Coffee>> getCoffee() {
         List<Coffee> coffees = iCoffeeService.getAllCoffees();
 
@@ -42,9 +45,11 @@ public class CoffeeController {
         
     }
 
-    @GetMapping("/{coffeeId}")
+    
+    @GetMapping("/{id}")
     public ResponseEntity<Coffee> getCoffeeById(@PathVariable Long id) {
 
+        
          Coffee coffee = iCoffeeService.getCoffeeById(id);
         if (coffee != null) {
             return ResponseEntity.ok(coffee);
@@ -58,11 +63,11 @@ public class CoffeeController {
     @PreAuthorize("hasAnyRole('ADMIN', 'EMPLOYEE')")
     @PostMapping(value = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Coffee> saveCoffee(
-        @RequestParam("name") String name,
-        @RequestParam("description") String description,
-        @RequestParam(value = "price") Double price,
-        @RequestParam(value = "recipe") String recipe,
-        @RequestParam("img") MultipartFile img
+        @RequestParam  String name,
+        @RequestParam String description,
+        @RequestParam  Double price,
+        @RequestParam String recipe,
+        @RequestParam MultipartFile img
     ) {
         try {
             String imageUrl = cloudinaryService.uploadFile(img);
@@ -83,7 +88,7 @@ public class CoffeeController {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN', 'EMPLOYEE')")
-    @DeleteMapping("/{coffeeId}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCoffee(@PathVariable Long id) {
 
         if (!iCoffeeService.exist(id)) {
@@ -93,6 +98,34 @@ public class CoffeeController {
             return ResponseEntity.noContent().build();
         }
        
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'EMPLOYEE')")
+    @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Coffee> updateCoffee(@PathVariable Long id, @RequestParam String name, @RequestParam String description, @RequestParam Double price, @RequestParam String recipe, @RequestParam(required = false) MultipartFile img) {
+        if (!iCoffeeService.exist(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        try {
+            Coffee existing = iCoffeeService.getCoffeeById(id); 
+
+            existing.setName(name);
+            existing.setDescription(description);
+            existing.setPrice(price);
+            existing.setRecipe(recipe);
+
+            if (img != null && !img.isEmpty()) {
+                String imageUrl = cloudinaryService.uploadFile(img);
+                existing.setImageUrl(imageUrl);
+            }
+
+            Coffee updated = iCoffeeService.updateCoffee(id, existing);
+            return ResponseEntity.ok(updated);
+
+        } catch (IOException e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
 }

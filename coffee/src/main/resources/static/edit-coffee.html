@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Coffee Shop: Descubre una variedad de cafés de alta calidad. Compra en línea y disfruta de la mejor experiencia de café."> 
+    <meta name="description" content="Coffe Shop: Descubre una variedad de cafés de alta calidad. Compra en línea y disfruta de la mejor experiencia de café."> 
     <meta name="keywords" content="café, ecommerce, tienda de café, comprar café, café en línea"> 
     <title>Coffe First</title>
     <link href="styles/output.css" rel="stylesheet">
@@ -92,62 +92,42 @@
     </header>
 
      <!------------------------------------------------------Principal----------------------------------->
-
-     <div class="min-h-screen flex items-center justify-center bg-secundario">
-        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm mt-28">
-            <h2 class="text-2xl font-bold mb-6 text-title text-center">Crear Cuenta</h2>
-            <form class="space-y-6">
-                <div>
-                    <label for="username" class="block mb-2 font-semibold text-title">Nombre de usuario</label>
-                    <input type="text" id="username" name="username" placeholder="Ingresa tu nombre de usuario" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-botones" />
-                    <p id="usernameError" class="text-red-600 text-sm mt-1 hidden">El campo username debe tener entre 3 y 15 caracteres</p>
-                </div>
-                <div>
-                    <label for="email" class="block mb-2 font-semibold text-title">Correo electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-botones" autocomplete="off"/>
-                    <p id="emailError" class="text-red-600 text-sm mt-1 hidden">Ingrese una direccion de correo electrónica valida</p>
-                </div>
-                <div>
-                    <div class="flex items-center justify-between mb-2">
-                        <label for="password" class="font-semibold text-title">Contraseña</label>
-                        <button type="button" id="togglePassword" class="flex items-center cursor-pointer text-gray-500 hover:text-botones focus:outline-none" aria-label="Mostrar contraseña">
-                            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-botones" />
-                    <p id="passwordError" class="text-red-600 text-sm mt-1 hidden">La contrseña debe tener entre 8 y 15 caracteres, letras mayusculas y minusculas, numeros, caracteres especiales y sin espacios en blanco</p>
-                </div>
-                <div>
-                    <div class="flex items-center justify-between mb-2">
-                        <label for="confirm-password" class="font-semibold text-title">Repetir Contraseña</label>
-                        <button type="button" id="toggleConfirmPassword" class="flex items-center cursor-pointer text-gray-500 hover:text-botones focus:outline-none" aria-label="Mostrar contraseña">
-                            <svg id="eyeIconConfirm" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Repite tu contraseña" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-botones" />
-                    <p id="confirmPasswordError" class="text-red-600 text-sm mt-1 hidden">Las contraseñas no coinciden</p>
-                </div>
-                <button type="submit" id="send-btn" class="btn btn-gradient-slide w-full py-3 font-bold text-white rounded-lg">Crear Cuenta</button>
-            </form>
-            <p class="mt-4 text-center text-sm text-gray-600">
-                ¿Ya tienes una cuenta? <a href="login.html" class="text-botones hover:underline font-semibold">Inicia sesión</a>
-            </p>
-        </div>
-    </div>
-
-
+     <main class="max-w-5xl mx-auto mt-26 px-4">
+        <h2 class="text-4xl font-bold text-center mb-6 text-title">Editar Café</h2>
+       
+            <form id="edit-coffee-form" method="POST" class="class="bg-white p-6 rounded-lg shadow-md space-y-6" enctype="multipart/form-data">
+            <div>
+                <label for="coffee-name" class="block font-semibold mb-2">Nombre</label>
+                <input type="text" id="coffee-name" name="coffee-name" class="w-full p-3 border border-gray-300 rounded" placeholder="Nombre del café" required>
+            </div>
+            <div>
+                <label for="coffee-price" class="block font-semibold mb-2">Precio</label>
+                <input type="number" id="coffee-price" name="coffee-price" class="w-full p-3 border border-gray-300 rounded" placeholder="Precio del café" step="0.01" min="0" required>
+            </div>
+            <div>
+                <label for="coffee-preparation" class="block font-semibold mb-2">Preparación</label>
+                <textarea id="coffee-preparation" name="coffee-preparation" class="w-full p-3 border border-gray-300 rounded" placeholder="Preparación del café" rows="4" required></textarea>
+            </div>
+            <div>
+                <label for="coffee-description" class="block font-semibold mb-2">Descripción</label>
+                <textarea id="coffee-description" name="coffee-description" class="w-full p-3 border border-gray-300 rounded" placeholder="Descripción del café" rows="3" required></textarea>
+            </div>
+            <div>
+                <label for="coffee-photo" class="block font-semibold mb-2">Foto</label>
+                <input type="file" id="coffee-photo" name="coffee-photo" accept="image/*" class="w-full p-3 border border-gray-300 rounded" >
+            </div>
+            <div class="flex space-x-4">
+                <button type="submit" id="save-btn" class="bg-botones text-white py-3 px-6 rounded hover:bg-botonesLigth font-semibold">Guardar Cambios</button>
+                <button type="button" id="cancel-btn" class="bg-gray-400 text-white py-3 px-6 rounded hover:bg-gray-500 font-semibold">Cancelar</button>
+            </div>
+        </form>
+    </main>
     
      <!------------------------------------------------------Footer ------------------------------------->
      <footer class="bg-header text-botones mt-12 selection:bg-white">
         <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="footer-about">
-                <h3 class="text-title font-bold text-xl mb-4">Coffee First</h3>
+                <h3 class="text-title font-bold text-xl mb-4">Coffe First</h3>
                 <p class="text-sm">
                     Somos una tienda en línea dedicada a ofrecer cafés de alta calidad para los amantes del buen café. 
                     Disfruta de nuestra selección exclusiva y servicio profesional.
@@ -190,7 +170,7 @@
 
     
     <script src="scripts/scripts.js"></script>
-    <script src="scripts/create-account.js"></script>
+    <script src="scripts/edit-coffee.js"></script>
     <script src="scripts/user-modal.js"></script>
 </body>
 </html>

@@ -41,4 +41,10 @@ public class CoffeeServiceImpl implements ICoffeeService {
           return iCoffeeRepository.existsById(id);
     }
 
+     @Override
+    public Coffee updateCoffee(Long id, Coffee coffee) {
+         return iCoffeeRepository.save(coffee);
+    }
+    
+
 }

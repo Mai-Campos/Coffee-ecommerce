@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
             validate: (value) => !isNaN(value) && parseFloat(value) > 0,
             errorMessage: "El precio debe ser un número mayor a 0."
         },
-        photo: {
+        img: {
             validate: (file) => {
                 if (!file) return false;
                 const allowedTypes = ["image/jpeg", "image/png"];
@@ -78,22 +78,50 @@ document.addEventListener("DOMContentLoaded", () => {
         // Validacion para cada campo
         Object.keys(validations).forEach(field => {
             let value;
-            if (field === "photo") {
+            if (field === "img") {
                 const input = document.getElementById(field);
                 value = input.files[0];
             } else {
                 value = document.getElementById(field).value.trim();
             }
-            if (!validations[field].validate(value)) {
-                const errorElem = document.getElementById(field + "-error");
-                if (errorElem) errorElem.textContent = validations[field].errorMessage;
-                valid = false;
-            }
+                if (!validations[field].validate(value)) {
+                    const errorElem = document.getElementById(field + "-error");
+                    if (errorElem) errorElem.textContent = validations[field].errorMessage;
+                    valid = false;
+                }
         });
 
         if (valid) {
-            form.submit();
-        }
+            const formData = new FormData();
+
+            formData.append("name", document.getElementById("name").value.trim());
+            formData.append("price", document.getElementById("price").value.trim());
+            formData.append("description", document.getElementById("description").value.trim());
+            formData.append("recipe", document.getElementById("recipe").value.trim());
+            formData.append("img", document.getElementById("img").files[0]);
+
+            fetch("http://localhost:8080/api/coffee/", {
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer " + token
+                },
+                body: formData
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("Error al guardar el café");
+                }
+                return res.json();
+            })
+            .then(data => {
+                alert("Café agregado exitosamente");
+                form.reset();
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Ocurrió un error al agregar el café");
+            });
+}
     });
 
     

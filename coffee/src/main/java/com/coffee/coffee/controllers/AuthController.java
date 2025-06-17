@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +44,7 @@ public class AuthController {
             .map(Role::getName)
             .collect(Collectors.toSet());
 
-        UserDto dto = new UserDto(user.getUsername(), roleNames);
+        UserDto dto = new UserDto(user.getId(),user.getUsername(), roleNames);
 
         return ResponseEntity.ok(dto);
     }

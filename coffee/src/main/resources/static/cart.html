@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Coffe Shop: Descubre una variedad de cafés de alta calidad. Compra en línea y disfruta de la mejor experiencia de café." />
+    <meta name="description" content="Coffee Shop: Descubre una variedad de cafés de alta calidad. Compra en línea y disfruta de la mejor experiencia de café." />
     <meta name="keywords" content="café, ecommerce, tienda de café, comprar café, café en línea" />
-    <title>Coffe First - Contáctanos</title>
+    <title>Coffee First - Contáctanos</title>
     <link href="styles/output.css" rel="stylesheet" />
 </head>
 <body class="bg-white selection:bg-header flex flex-col min-h-screen">
@@ -14,7 +14,7 @@
     <header class="bg-header p-2.5 shadow-lg/10 fixed w-full z-50 top-0 selection:bg-white">
         <nav class="flex flex-row items-center justify-between">
             <div class="shop-name flex-1">
-                <h1 class="Title font-serif text-6xl text-title" title="Nombre de la tienda">Coffe first</h1>
+                <h1 class="Title font-serif text-6xl text-title" title="Nombre de la tienda">Coffee first</h1>
             </div>
 
             <!------------------------------boton para menu movil----------------------------------------------------------------------------------->
@@ -57,9 +57,17 @@
         <div id="mobile-menu" class="xs:hidden hidden bg-header p-4 text-2xl w-full absolute z-50 left-0 top-[100%]">
             <ul class="list-none space-y-4">
                 <li><a href="index.html" class="block">Principal</a></li>
-                <li><a aria-disabled="true" title="Seccion contactanos">Contáctanos</a></li>
+                <li><a href="contact-us.html" title="Seccion contactanos">Contáctanos</a></li>
+                <li id="mobile-user-menu" class="relative hidden">
+                    <div id="mobile-user-info" class="bg-white rounded-xl p-4 shadow text-gray-900">
+                    <p class="font-bold mb-2">¡Hola, <span id="mobile-user-name">Usuario</span>!</p>
+                    <button id="mobile-logout-btn" class="w-full bg-botones text-white py-2 rounded hover:bg-botonesLigth">
+                        Cerrar sesión
+                    </button>
+                    </div>
+                </li>
                 <li><a href="login.html" class="bg-white p-3 rounded-2xl hover:bg-gray-100 float-end">Iniciar Sesion</a></li>
-                <li class="carrito relative">
+                <li aria-disabled="true" class="carrito relative">
                     <a href="cart.html">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-cart4 h-10 w-14 opacity-20" viewBox="0 0 16 16">
                             <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
@@ -128,7 +136,7 @@
      <footer class="bg-header text-botones mt-12 selection:bg-white">
         <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="footer-about">
-                <h3 class="text-title font-bold text-xl mb-4">Coffe First</h3>
+                <h3 class="text-title font-bold text-xl mb-4">Coffee First</h3>
                 <p class="text-sm">
                     Somos una tienda en línea dedicada a ofrecer cafés de alta calidad para los amantes del buen café. 
                     Disfruta de nuestra selección exclusiva y servicio profesional.

@@ -32,9 +32,10 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .cors(cors -> cors.disable()) // Deshabilita CORS si solo accedes localmente
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/login","/users/register/**","/index.html","/cart.html","/contact-us.html","/details-coffe.html", "/create-account.html","/create-admin.html","coffes-admin.html","/add-coffee.html","orders-admin.html",  "/login.html", "/styles/**","/unauthorized.html", "/scripts/**", "/img/**", "/static/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/products/**").hasAnyRole("CLIENT", "EMPLOYEE", "ADMIN")
-                .requestMatchers(HttpMethod.POST, "/products/**").hasAnyRole("EMPLOYEE", "ADMIN")
+                .requestMatchers("/auth/login","/users/register/**","/index.html","/cart.html","/contact-us.html","/details-coffee.html", "/create-account.html","/create-employee.html","coffees-admin.html","/add-coffee.html","orders-admin.html",  "/login.html", "/styles/**","/unauthorized.html", "/scripts/**", "/img/**", "/static/**", "/edit-coffee.html/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/coffee/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/coffee/**").hasAnyRole("EMPLOYEE", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/coffee/**").hasAnyRole("EMPLOYEE", "ADMIN")
                 .requestMatchers(HttpMethod.POST ,"/employees/**").hasRole("ADMIN")
                 .requestMatchers("/orders/**").hasAnyRole("EMPLOYEE", "ADMIN")
                 .requestMatchers("/auth/me").authenticated()
