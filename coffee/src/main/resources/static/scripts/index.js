@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return res.json();
         })
         .then(coffees => {
+           
             coffees.forEach(coffee => {
                 const card = document.createElement("div");
                 card.className = "product-card bg-secundario rounded-lg shadow-md p-4 flex flex-col items-center max-w-sm";
@@ -77,16 +78,42 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p class="text-botones font-bold mb-4">$${parseFloat(coffee.price).toFixed(2)}</p>
                     <div class="flex space-x-4">
                     <a href="details-coffee.html?id=${coffee.id}" class="btn-detalles inline-block cursor-pointer">Ver detalles</a>
-                        <button class="btn-agregar">Agregar al carrito</button>
+                        <button class="btn-agregar" data-id=${coffee.id}>Agregar al carrito</button>
                     </div>
                 `;
 
                 coffeeContainer.appendChild(card);
-            });
-        })
-        .catch(err => {
+           
+            })
+        }).catch(err => {
             console.error("Error al cargar los cafés:", err);
-        });
+            });
+
+       coffeeContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('btn-agregar')) {
+                const productId = event.target.getAttribute('data-id');
+
+                const cartCountElem = document.querySelector('.cart-count');
+                cartCountElem.textContent = parseInt(cartCountElem.textContent) + 1;
+
+                fetch('/api/cart/' + encodeURIComponent(productId), {
+                    method: 'POST',
+                    credentials: 'include'
+                })
+                .then(res => {
+                    if (!res.ok) throw new Error('Error al agregar al carrito');
+                })
+                    .then(() => {
+                     alert('Producto agregado al carrito');
+                })
+                    .catch(err => {
+                    console.error(err);
+                    alert('No se pudo agregar el producto al carrito');
+                    });
+            }
+            });
+
 
       
 });
+

@@ -1,49 +1,42 @@
+document.addEventListener('DOMContentLoaded', () => {
+  
+  fetch('/api/cart', {
+    method: 'GET',
+    credentials: 'include' 
+  })
+  .then(res => {
+    if (!res.ok) throw new Error('Error al cargar el carrito');
+    return res.json();
+  })
+  .then(data => {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalPriceElem = document.querySelector('.total-price');
+    cartItemsContainer.innerHTML = ''; 
 
-//Script para actualizar el total
-function updateTotal() {
-    const cartItems = document.querySelectorAll('.cart-item');
     let total = 0;
-    cartItems.forEach(item => {
-        const price = parseFloat(item.getAttribute('data-price'));
-        const quantity = parseInt(item.querySelector('.quantity').textContent);
-        total += price * quantity;
+
+    data.forEach(item => {
+      total += item.price * item.quantity;
+
+      const itemDiv = document.createElement('div');
+      itemDiv.classList.add('flex', 'justify-between', 'items-center', 'p-4', 'bg-white', 'rounded', 'shadow');
+
+      itemDiv.innerHTML = `
+        <div>
+          <h3 class="font-semibold text-lg">${item.name}</h3>
+          <p class="text-sm text-gray-600">Cantidad: ${item.quantity}</p>
+        </div>
+        <div class="font-semibold text-lg">$${(item.price * item.quantity).toFixed(2)}</div>
+      `;
+
+      cartItemsContainer.appendChild(itemDiv);
     });
-    document.querySelector('.total-price').textContent = 'Total: $' + total.toFixed(2);
-}
 
-//--------------------------------------------------------------
-
-//Script para el boton de quitar productos
-
-document.querySelectorAll('.subtract-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        const cartItem = button.closest('.cart-item');
-        const quantitySpan = cartItem.querySelector('.quantity');
-        let quantity = parseInt(quantitySpan.textContent);
-        if (quantity > 1) {
-            quantity--;
-            quantitySpan.textContent = quantity;
-        } else {
-            cartItem.remove();
-        }
-        updateTotal();
-    });
-});
-
-//-----------------------------------------------------------------------------------------
-
-//LLamado de la funcion para actualizar el total
-updateTotal();
-
-
-//Script para elboton realizar pedido
-const btnBuy = document.getElementById("btn-buy");
-
-btnBuy.addEventListener("click",()=>{
-   const confirmation = confirm("Desea realizar la compra?");
-    if(confirmation){
-        alert("Pedido realizado correctamente");
-    }else{
-        alert("Pedido cancelado");
-    }
+    totalPriceElem.textContent = `Total: $${total.toFixed(2)}`;
+  })
+  .catch(err => {
+    console.error(err);
+    alert('No se pudo cargar el carrito');
+  });
+ 
 });
