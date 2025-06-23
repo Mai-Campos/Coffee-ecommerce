@@ -2,8 +2,10 @@ package com.coffee.coffee.services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.coffee.coffee.models.Role;
 import com.coffee.coffee.models.User;
@@ -36,10 +38,10 @@ public class ClientServiceImpl implements IUserService {
     @Override
     public User createUser(String username, String password, String email) {
         if (userRepository.existsByUserName(username)) {
-            throw new RuntimeException("El usuario ya existe");
+    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El nombre de usuario ya existe");
         }
         if (userRepository.existsByEmail(email)) {
-            throw new RuntimeException("El usuario con el email espcificado ya existe");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El correo electrónico ya está registrado");
         }
 
         Role clientRole = roleRepository.findByName("ROLE_CLIENT")

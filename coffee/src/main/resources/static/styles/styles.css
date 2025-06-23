@@ -15,6 +15,11 @@
         margin: 0 15px;
     }
 
+    /* Add bottom border to cart items with button color */
+    .item-list {
+        border-bottom: 2px solid var(--color-botones) !important;
+    }
+
     
     .menu-toggle {
         z-index: 100;
@@ -24,6 +29,8 @@
     .menu-open {
         padding-top: 230px;
         }  
+
+    
 
 
      .carousel-container {

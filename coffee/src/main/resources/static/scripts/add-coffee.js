@@ -26,7 +26,6 @@ fetch('http://localhost:8080/auth/me', {
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("add-coffee-form");
 
-
     // Validaciones
     const validations = {
         name: {
@@ -84,11 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 value = document.getElementById(field).value.trim();
             }
-                if (!validations[field].validate(value)) {
-                    const errorElem = document.getElementById(field + "-error");
-                    if (errorElem) errorElem.textContent = validations[field].errorMessage;
-                    valid = false;
-                }
+            if (!validations[field].validate(value)) {
+                const errorElem = document.getElementById(field + "-error");
+                if (errorElem) errorElem.textContent = validations[field].errorMessage;
+                valid = false;
+            }
         });
 
         if (valid) {
@@ -114,15 +113,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 return res.json();
             })
             .then(data => {
-                alert("Café agregado exitosamente");
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Café agregado!',
+                    text: 'El café se agregó exitosamente.',
+                    confirmButtonColor: '#7D5941'
+                });
                 form.reset();
             })
             .catch(err => {
                 console.error(err);
-                alert("Ocurrió un error al agregar el café");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrió un error al agregar el café.',
+                    confirmButtonColor: '#7D5941'
+                });
             });
-}
+        } else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campos inválidos',
+                text: 'Por favor, corrige los errores en el formulario.',
+                confirmButtonColor: '#7D5941'
+            });
+        }
     });
-
-    
 });

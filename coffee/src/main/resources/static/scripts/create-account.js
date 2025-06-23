@@ -51,72 +51,77 @@ const sendBtn = document.getElementById("send-btn");
 const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passworReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*.?&])([A-Za\d$@$!%*.?%]|[^ ]){8,15}$/;
 
-sendBtn.addEventListener("click",(e)=>{
-   e.preventDefault();
-   const userNameInput = document.getElementById("username");
-   const emailInput = document.getElementById("email");
-   const passwordInput = document.getElementById("password");
-   const confirmPasswordInput = document.getElementById("confirm-password");
+sendBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const userNameInput = document.getElementById("username");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirm-password");
 
-
-   //Nombre de usuario
-   if(userNameInput.value.length < 3 || userNameInput.value.length > 15){
+    // Nombre de usuario
+    if (userNameInput.value.length < 3 || userNameInput.value.length > 15) {
         document.getElementById("usernameError").classList.remove("hidden");
-    return;
-    }else{
+        return;
+    } else {
         document.getElementById("usernameError").classList.add("hidden");
-
     }
-    
-    //Email
-    if(emailInput.value.length < 5 || !emailInput.value.match(emailReg)){
+
+    // Email
+    if (emailInput.value.length < 5 || !emailInput.value.match(emailReg)) {
         document.getElementById("emailError").classList.remove("hidden");
         return;
-    }else{
+    } else {
         document.getElementById("emailError").classList.add("hidden");
-
     }
 
-    //Password
-    if(!passwordInput.value.match(passworReg)){
+    // Password
+    if (!passwordInput.value.match(passworReg)) {
         document.getElementById("passwordError").classList.remove("hidden");
         return;
-    }else{
+    } else {
         document.getElementById("passwordError").classList.add("hidden");
-
     }
 
-    //Repetir password
-    if(confirmPasswordInput.value != passwordInput.value){
+    // Repetir password
+    if (confirmPasswordInput.value !== passwordInput.value) {
         document.getElementById("confirmPasswordError").classList.remove("hidden");
         return;
-       }else{
+    } else {
         document.getElementById("confirmPasswordError").classList.add("hidden");
-       }
+    }
 
-    // Lógica para crear el usuario (petición al backend)
+    // Petición al backend
     fetch('http://localhost:8080/users/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            username: userNameInput.value,
-            email: emailInput.value,
-            password: passwordInput.value
-        })
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        username: userNameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value
     })
-    .then(response => {
+})
+    .then(async response => {
         if (response.ok) {
-            alert('¡Cuenta creada correctamente!');
-            window.location.href = 'login.html';
+            Swal.fire({
+                title: '¡Registro exitoso!',
+                text: 'Tu cuenta ha sido creada correctamente.',
+                icon: 'success',
+                confirmButtonColor: '#7D5941'
+            }).then(() => {
+                window.location.href = 'login.html';
+            });
         } else {
-            return response.text().then(text => { throw new Error(text); });
+            const errorText = await response.text();
+            Swal.fire({
+                title: 'Error al crear la cuenta',
+                text: errorText || 'No se pudo crear la cuenta',
+                icon: 'error',
+                confirmButtonColor: '#7D5941'
+            });
         }
     })
-    .catch(error => {
-        alert('Error al crear la cuenta: ' + error.message);
-    });
 });
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------

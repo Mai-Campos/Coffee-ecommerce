@@ -4,5 +4,10 @@
     "bootstrap": "^5.3.5",
     "bootstrap-icons": "^1.11.3",
     "tailwindcss": "^4.1.4"
+  },
+
+  "scripts": {
+    "dev": "npx tailwindcss -i ./input.css -o ../resources/static/styles/output.css --watch",
+    "build": "npx tailwindcss -i ./input.css -o ../resources/static/css/output.css --minify"
   }
 }

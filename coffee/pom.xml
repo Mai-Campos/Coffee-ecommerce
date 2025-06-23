@@ -131,6 +131,32 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>tailwind-build</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>npx</executable>
+							<workingDirectory>${project.basedir}/src/main/resources/static</workingDirectory>
+							<arguments>
+								<argument>tailwindcss</argument>
+								<argument>-i</argument>
+								<argument>./styles/styles.css</argument>
+								<argument>-o</argument>
+								<argument>./styles/output.css</argument>
+								<argument>--minify</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

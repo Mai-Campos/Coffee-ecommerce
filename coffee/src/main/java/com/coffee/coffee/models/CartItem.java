@@ -1,21 +1,27 @@
 package com.coffee.coffee.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
+@Entity
 public class CartItem {
 
 
-    private Long productId;
-    private String name;
-    private double price;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    private Coffee coffee;
+
     private int quantity;
 
-     public CartItem(Coffee coffee, int quantity) {
-        this.productId = coffee.getId(); // Asumiendo que Coffee tiene getId()
-        this.name = coffee.getName();
-        this.price = coffee.getPrice();
-        this.quantity = quantity;
-    }
+    @ManyToOne
+    private User user;
 
 }

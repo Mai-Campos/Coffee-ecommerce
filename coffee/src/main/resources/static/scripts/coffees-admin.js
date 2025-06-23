@@ -82,10 +82,37 @@ async function renderCoffeeTable() {
     document.querySelectorAll('.delete-btn').forEach(button => {
         button.addEventListener('click', async () => {
             const id = button.getAttribute('data-id');
-            if (confirm('¿Está seguro de que desea eliminar este café?')) {
-                await deleteCoffee(id);
-                renderCoffeeTable();
-            }
+
+            Swal.fire({
+                title: '¿Eliminar este café?',
+                text: 'Esta acción no se puede deshacer.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#7D5941',
+                cancelButtonColor: '#aaa',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        await deleteCoffee(id);
+                        Swal.fire({
+                            title: 'Eliminado',
+                            text: 'El café ha sido eliminado.',
+                            icon: 'success',
+                            confirmButtonColor: '#7D5941'
+                        });
+                        renderCoffeeTable(); // Actualiza la tabla después de eliminar
+                    } catch (error) {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'No se pudo eliminar el café.',
+                            icon: 'error',
+                            confirmButtonColor: '#7D5941'
+                        });
+                    }
+                }
+            });
         });
     });
 

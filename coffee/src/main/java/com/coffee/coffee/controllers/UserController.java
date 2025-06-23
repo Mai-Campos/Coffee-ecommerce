@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
 import com.coffee.coffee.models.User;
 import com.coffee.coffee.services.IUserService;
 import com.coffee.util.dto.AuthenticationRequest;
@@ -39,8 +41,12 @@ public class UserController {
    
     @PostMapping("/register")
     public ResponseEntity<?> registerClient(@RequestBody AuthenticationRequest request) {
-        clientService.createUser(request.getUsername(),request.getPassword(), request.getEmail());
-        return ResponseEntity.ok("Cliente registrado correctamente");
+       try {
+            clientService.createUser(request.getUsername(), request.getPassword(), request.getEmail());
+            return ResponseEntity.ok("Cliente registrado correctamente");
+        } catch (ResponseStatusException e) {
+            return ResponseEntity.status(e.getStatusCode()).body(e.getReason());
+        }
     }
 
     @PreAuthorize("hasRole('ADMIN')")

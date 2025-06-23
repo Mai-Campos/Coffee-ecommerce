@@ -60,6 +60,8 @@ setInterval(slideToNextHeading, 5000);
 // ---------------------------- Script para cargar tarjetas dinámicas de cafés ------------------------------
 document.addEventListener("DOMContentLoaded", () => {
     const coffeeContainer = document.getElementById("coffee-container");
+    const cartCountElem = document.querySelector('.cart-count');
+
 
     fetch("http://localhost:8080/api/coffee")
         .then(res => {
@@ -89,29 +91,59 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error al cargar los cafés:", err);
             });
 
-       coffeeContainer.addEventListener('click', (event) => {
-            if (event.target.classList.contains('btn-agregar')) {
-                const productId = event.target.getAttribute('data-id');
+    coffeeContainer.addEventListener('click', (event) => {
+        if (event.target.classList.contains('btn-agregar')) {
+            const productId = event.target.getAttribute('data-id');
+            const token = localStorage.getItem('token');
 
-                const cartCountElem = document.querySelector('.cart-count');
-                cartCountElem.textContent = parseInt(cartCountElem.textContent) + 1;
-
-                fetch('/api/cart/' + encodeURIComponent(productId), {
-                    method: 'POST',
-                    credentials: 'include'
-                })
-                .then(res => {
-                    if (!res.ok) throw new Error('Error al agregar al carrito');
-                })
-                    .then(() => {
-                     alert('Producto agregado al carrito');
-                })
-                    .catch(err => {
-                    console.error(err);
-                    alert('No se pudo agregar el producto al carrito');
-                    });
+            if (!token) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¡Atención!',
+                    text: 'Debes iniciar sesión para agregar productos al carrito.',
+                    confirmButtonText: 'Iniciar sesión',
+                    confirmButtonColor: '#7D5941',
+                    showCloseButton: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/login.html';
+                    }
+                });
+                return;
             }
+
+            fetch('/api/cart/' + encodeURIComponent(productId), {
+                method: 'POST',
+                headers: {
+                    authorization: 'Bearer ' + token
+                },
+                credentials: 'include'
+            })
+            .then(res => {
+                if (!res.ok) throw new Error('Error al agregar al carrito');
+                return res.text();
+            })
+            .then(() => {
+                cartCountElem.textContent = parseInt(cartCountElem.textContent) + 1;
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Agregado!',
+                    text: 'Producto agregado al carrito.',
+                    confirmButtonColor: '#7D5941'
+                });
+            })
+            .catch(err => {
+                console.error(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo agregar el producto al carrito.',
+                    confirmButtonColor: '#7D5941'
+                });
             });
+        }
+    });
+
 
 
       

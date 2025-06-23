@@ -1,4 +1,3 @@
-//------------------Scripts para ocultar el menu navegacion en la vista mobile-------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -9,21 +8,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //-------------------------------------------------------------------------------------------------------------------------
 
-    
-
     //------------------------------------------Script para el carrito de compras------------------------------------------------------
 
-    let count = 0;
-    let countCart = document.querySelectorAll('.cart-count')
-    const addButtons = document.querySelectorAll('.btn-agregar');
-    addButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            
-           count++;
-           countCart.forEach(counted =>{
-            counted.innerHTML = count;
-           })
+    
+
+    const countCart = document.querySelectorAll('.cart-count');
+
+    fetch('/api/cart', {
+        
+        method: 'GET',
+        headers:{
+            authorization: 'Bearer ' + localStorage.getItem('token') 
+        },
+        credentials: 'include'
+    })
+    .then(res => {
+        if (!res.ok) throw new Error('Error al cargar el carrito');
+        return res.json();
+    })
+    .then(data => {
+        let totalCount = 0;
+        data.forEach(item => {
+            totalCount += item.quantity;
         });
+        countCart.forEach(counted => {
+            counted.textContent = totalCount;
+        });
+    })
+    .catch(err => {
+        console.error(err);
     });
 
     //-----------------------------------------------------------------------------------------------------------------------------
