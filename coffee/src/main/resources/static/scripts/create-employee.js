@@ -135,17 +135,40 @@ sendBtn.addEventListener("click",(e)=>{
         })
     })
     .then(response => {
-        if (response.ok) {
-            alert('¡Cuenta creada correctamente!');
+    if (response.ok) {
+        Swal.fire({
+            icon: 'success',
+            buttonsStyling: false,
+            customClass: {
+                confirmButton: 'btn',
+            },
+            title: '¡Cuenta creada correctamente!',
+            confirmButtonText: 'OK'
+        }).then(() => {
             window.location.href = 'login.html';
-        } else {
-            return response.text().then(text => { throw new Error(text); });
-        }
+        });
+    } else {
+        return response.text().then(text => { throw new Error(text); });
+    }
     })
+
+
     .catch(error => {
-        alert('Error al crear la cuenta: ' + error.message);
+        Swal.fire({
+            icon: 'error',
+            buttonsStyling: false,
+            customClass: {
+                confirmButton: 'btn',
+            },
+            title: 'Error al crear la cuenta',
+            text: error.message,
+            confirmButtonText: 'Cerrar'
+        });
     });
-});
+
+}
+);
+    
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------

@@ -23,7 +23,7 @@ fetch('http://localhost:8080/auth/me', {
   console.error(error);
 });
 
-//Boton cancelar
+// Botón cancelar
 document.addEventListener('DOMContentLoaded', () => {
     const cancelBtn = document.getElementById('cancel-btn');
     if (cancelBtn) {
@@ -48,40 +48,70 @@ fetch(`/api/coffee/${id}`)
         document.getElementById('coffee-photo').src = coffee.imageUrl;
     });
 
-    document.getElementById('edit-coffee-form').addEventListener('submit', function (e) {
+document.getElementById('edit-coffee-form').addEventListener('submit', function (e) {
     e.preventDefault();
-      
-    const confirmation = confirm('¿Estás seguro que quieres guardar los cambios?');
-    if (!confirmation) {
-      return; 
-    }
 
-    const formData = new FormData();
-    formData.append('name', document.getElementById('coffee-name').value);
-    formData.append('price', document.getElementById('coffee-price').value);
-    formData.append('recipe', document.getElementById('coffee-preparation').value);
-    formData.append('description', document.getElementById('coffee-description').value);
+    Swal.fire({
+        title: '¿Estás seguro?',
+        buttonsStyling: false,
+        customClass: {
+            confirmButton: 'btn',
+            cancelButton: 'swal-cancel-btn'
+        },
+        text: "¿Deseas guardar los cambios?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, guardar cambios',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const formData = new FormData();
+            formData.append('name', document.getElementById('coffee-name').value);
+            formData.append('price', document.getElementById('coffee-price').value);
+            formData.append('recipe', document.getElementById('coffee-preparation').value);
+            formData.append('description', document.getElementById('coffee-description').value);
 
+            const imageFile = document.getElementById('coffee-photo').files[0];
+            if (imageFile) {
+                formData.append('imageUrl', imageFile);
+            }
 
-    const imageFile = document.getElementById('coffee-photo').files[0];
-    if (imageFile) {
-      formData.append('imageUrl', imageFile);  
-    }
+            fetch(`/api/coffee/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('No se pudo actualizar el café');
 
-    fetch(`/api/coffee/${id}`, {
-      method: 'PUT',
-      headers: {
-                'Authorization': 'Bearer ' + token
-            },
-      body: formData
-    })
-    .then(response => {
-      if (!response.ok) throw new Error('No se pudo actualizar el café');
-      alert('Café actualizado con éxito');
-      window.location.href = 'coffees-admin.html';
-    })
-    .catch(error => {
-      alert('Error al guardar: ' + error.message);
+                Swal.fire({
+                    icon: 'success',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn',
+                    },
+                    title: 'Café actualizado con éxito',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = 'coffees-admin.html';
+                });
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn',
+                        cancelButton: 'swal-cancel-btn'
+                    },
+                    title: 'Error al guardar',
+                    text: error.message
+                });
+            });
+        }
     });
-  });
-
+});

@@ -1,5 +1,3 @@
-// Lógica para mostrar el usuario autenticado y el modal en el header y menú móvil
-
 document.addEventListener('DOMContentLoaded', function () {
     // Escritorio
     const userMenu = document.getElementById('user-menu');
@@ -15,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileUserMenu = document.getElementById('mobile-user-menu');
     const mobileUserName = document.getElementById('mobile-user-name');
     const mobileLogoutBtn = document.getElementById('mobile-logout-btn');
-
-   
 
     // Obtener el nombre del usuario autenticado del localStorage (o token)
     const token = localStorage.getItem('token');
@@ -57,30 +53,51 @@ document.addEventListener('DOMContentLoaded', function () {
             userModal.classList.toggle('hidden');
         });
     }
-  
+
     document.addEventListener('click', function (e) {
         if (userModal && !userModal.classList.contains('hidden')) {
             userModal.classList.add('hidden');
         }
-       
     });
     userModal && userModal.addEventListener('click', function (e) { e.stopPropagation(); });
+
     logoutBtn && logoutBtn.addEventListener('click', function () {
-       const logout = confirm('¿Estás seguro de que quieres cerrar sesión?');
-       if (logout) {
-           localStorage.removeItem('token');
-           window.location.reload();
-       } 
+         Swal.fire({
+                title: '¿Cerrar Sesión?',
+                text: 'Esta seguro que desea cerrar sesión?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#7D5941',
+                cancelButtonColor: '#aaa',
+                confirmButtonText: 'Sí, Cerrar Sesión',
+                cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('token');
+                window.location.reload();
+            }
+        });
     });
 
     mobileLogoutBtn && mobileLogoutBtn.addEventListener('click', function () {
-    const logout = confirm('¿Estás seguro de que quieres cerrar sesión?');
-    if (logout) {
-        localStorage.removeItem('token');
-        window.location.reload();
-    }
-});
+        Swal.fire({
+            title: '¿Estás seguro de que quieres cerrar sesión?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, cerrar sesión',
+            cancelButtonText: 'Cancelar',
+            cancelButtonColor: '#aaa',
+            
+            
+            customClass: {
+                confirmButton: 'btn',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('token');
+                window.location.reload();
+            }
+        });
+    });
 
-  
- 
 });

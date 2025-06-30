@@ -11,40 +11,51 @@ import com.coffee.coffee.repository.ICoffeeRepository;
 public class CoffeeServiceImpl implements ICoffeeService {
 
      @Autowired
-     ICoffeeRepository iCoffeeRepository;
+     ICoffeeRepository coffeeRepository;
 
     @Override
     public List<Coffee> getAllCoffees() {
          List<Coffee> coffees = new ArrayList<Coffee>();
-         coffees = iCoffeeRepository.findAll();
+         coffees = coffeeRepository.findAll();
          return coffees;  
     }
 
     @Override
     public Coffee getCoffeeById(Long id) {
-         Coffee coffee = iCoffeeRepository.findById(id).get();
+         Coffee coffee = coffeeRepository.findById(id).get();
          return coffee;
     }
 
     @Override
     public Coffee createCoffee(Coffee coffee) {
-         return iCoffeeRepository.save(coffee);
+         return coffeeRepository.save(coffee);
     }
 
     @Override
     public void deleteCoffee(Long id) {
-         iCoffeeRepository.deleteById(id);
+         coffeeRepository.deleteById(id);
     }
 
     @Override
     public boolean exist(Long id) {
-          return iCoffeeRepository.existsById(id);
+          return coffeeRepository.existsById(id);
     }
 
      @Override
     public Coffee updateCoffee(Long id, Coffee coffee) {
-         return iCoffeeRepository.save(coffee);
+         return coffeeRepository.save(coffee);
     }
+
+    @Override
+    public Coffee updateFeaturedStatus(Long id, boolean featured) {
+        Coffee coffee = getCoffeeById(id);
+        if (coffee == null) {
+            return null;
+        }
+        coffee.setFeatured(featured);
+        return coffeeRepository.save(coffee);
+    }
+
     
 
 }

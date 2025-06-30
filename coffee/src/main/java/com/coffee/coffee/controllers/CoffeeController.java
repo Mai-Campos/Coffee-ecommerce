@@ -13,11 +13,15 @@ import org.springframework.web.multipart.MultipartFile;
 import com.coffee.coffee.models.Coffee;
 import com.coffee.coffee.services.CloudinaryService;
 import com.coffee.coffee.services.ICoffeeService;
+import com.coffee.util.dto.FeaturedDTO;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -126,6 +130,16 @@ public class CoffeeController {
         } catch (IOException e) {
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'EMPLOYEE')")
+    @PatchMapping("/{id}/featured")
+    public ResponseEntity<Coffee> updateFeaturedStatus( @PathVariable Long id, @RequestBody FeaturedDTO body) {
+        Coffee updated = iCoffeeService.updateFeaturedStatus(id, body.featured);
+        if (updated == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(updated);
     }
 
 }

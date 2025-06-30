@@ -158,11 +158,51 @@
         background-color: #8B5E3C;
     }
 
+    /* New styles for heart button alignment and responsiveness */
+    .button-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap; /* allow wrapping on smaller screens */
+    }
+
+    .heart-button-label {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        top: 0;
+        margin-left: 2rem; /* increased spacing from other buttons */
+    }
+
+    .heart-button-label svg {
+        position: static;
+        width: 24px;
+        height: 24px;
+        display: block;
+        margin-left: 8px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 890px) {
+        .button-container {
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        .heart-button-label {
+            margin-left: 0;
+            margin-top: 0.5rem; /* spacing below buttons when stacked */
+        }
+    }
+
    .btn-detalles {
         margin-right: 0.5rem;
     }
 
-     .btn-agregar {
+   .btn-agregar {
         margin-left: 0.5rem;
     }
 
@@ -172,7 +212,9 @@
         width: 100%;
     }
 
+    
 
+    
 
     /* Sliding animation for dynamic heading */
     #dynamic-heading {
@@ -199,19 +241,6 @@
         padding: 1rem;
         display: flex;
         gap: 2rem;
-        flex-wrap: wrap;
-    }
-    #left-section {
-        flex: 1 1 300px;
-        max-width: 400px;
-        position: relative;
-    }
-    #left-section img {
-        width: 100%;
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        float: left;
-        margin-right: 1rem;
     }
     #coffee-name {
         font-size: 2rem;
@@ -293,13 +322,45 @@
         }
         #coffee-table-body tr:nth-child(even) {
             background-color: #6f4e37;
-            color: white;
+            color: black !important;
         }
         #coffee-table-body tr:hover {
             background-color: #a67c52 !important;
             color: white;
             transition: background-color 0.3s ease;
         }
+
+       /* Contenedor de botones y corazón */
+.flex.items-center.space-x-2 {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    gap: 0.5rem; /* espacio entre elementos */
+}
+
+/* Label que envuelve el checkbox y el corazón */
+label.relative {
+    position: relative;
+    display: inline-flex; /* para alinear verticalmente contenido */
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    top: 0; /* quita el top negativo para que no rompa layout */
+}
+
+/* Corazón SVG sin posición absoluta, para que fluya */
+svg.absolute {
+    position: static; /* o elimina esta clase si no la necesitas */
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+/* Ocultar con clase hidden */
+.hidden {
+    display: none;
+}
         /* Style action buttons */
         .edit-btn {
             background-color: #3b82f6; /* blue-500 */
@@ -339,7 +400,9 @@
             transform: scale(1.1);
         }
 
-         /* Responsive improvements */
+      
+
+     /* Responsive improvements */
         @media (max-width: 640px) {
             table, thead, tbody, th, td, tr {
                 display: block;
@@ -391,5 +454,6 @@
                 vertical-align: middle !important;
             }
         }
-}
 
+       
+}

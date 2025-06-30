@@ -3,6 +3,7 @@ package com.coffee.coffee.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
@@ -23,6 +24,10 @@ public class Coffee {
     private String imageUrl;
     private Double price;
     private String recipe;
+
+    @Column(nullable = false)
+    private boolean featured = false;
+    
  
     @ManyToMany(mappedBy = "coffees")
     private List<Order> orders = new ArrayList<>();

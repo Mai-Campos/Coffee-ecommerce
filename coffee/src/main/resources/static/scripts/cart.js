@@ -1,6 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('token');
 
+   if (!token) {
+                Swal.fire({
+                    icon: 'warning',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn',
+                    },
+                    title: '¡Atención!',
+                    text: 'Debes iniciar sesión para acceder al carrito de compras',
+                    confirmButtonText: 'Iniciar sesión',
+                    confirmButtonColor: '#7D5941',
+                    showCloseButton: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/login.html';
+                    }
+                });
+                return;
+            }
+
+
   fetch('/api/cart', {
     method: 'GET',
     headers: {

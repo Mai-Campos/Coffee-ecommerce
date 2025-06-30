@@ -99,6 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!token) {
                 Swal.fire({
                     icon: 'warning',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn',
+                    },
                     title: '¡Atención!',
                     text: 'Debes iniciar sesión para agregar productos al carrito.',
                     confirmButtonText: 'Iniciar sesión',
@@ -127,6 +131,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 cartCountElem.textContent = parseInt(cartCountElem.textContent) + 1;
                 Swal.fire({
                     icon: 'success',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn',
+                        cancelButton: 'swal-cancel-btn'
+                    },
                     title: '¡Agregado!',
                     text: 'Producto agregado al carrito.',
                     confirmButtonColor: '#7D5941'
@@ -136,6 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error(err);
                 Swal.fire({
                     icon: 'error',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn',
+                        cancelButton: 'swal-cancel-btn'
+                    },
                     title: 'Error',
                     text: 'No se pudo agregar el producto al carrito.',
                     confirmButtonColor: '#7D5941'
