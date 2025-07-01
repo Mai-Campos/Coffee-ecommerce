@@ -57,7 +57,7 @@ async function renderCoffeeTable() {
   coffees.forEach(coffee => {
     const row = document.createElement('tr');
 
-    // Checkbox checked si coffee.featured es true
+    // Checkbox checked si coffee.featured es trueA
     const isFeatured = coffee.featured === true;
 
     row.innerHTML = `
@@ -103,7 +103,7 @@ async function renderCoffeeTable() {
               viewBox="0 0 24 24" 
               fill="red" 
               stroke="red"
-              stroke-width="2"
+              stroke-width="2"gi
               class="w-7 h-7 absolute top-0 left-0 heart-filled ${isFeatured ? '' : 'hidden'} transition-opacity duration-300 opacity-0"
             >
               <path 
@@ -177,46 +177,59 @@ async function renderCoffeeTable() {
   });
 
   // Evento marcar favorito (toggle iconos y actualizar backend)
-  document.querySelectorAll('.favorite-toggle').forEach(checkbox => {
-    checkbox.addEventListener('change', async () => {
-      const id = checkbox.getAttribute('data-id');
-      const featured = checkbox.checked;
+document.querySelectorAll('.favorite-toggle').forEach(checkbox => {
+  checkbox.addEventListener('change', async () => {
+    const id = checkbox.getAttribute('data-id');
+    const featured = checkbox.checked;
 
-      const label = checkbox.closest('label');
-      if (!label) {
-        console.error('Label parent not found for favorite-toggle checkbox');
-        return;
-      }
-      const heartOutline = label.querySelector('.heart-outline');
-      const heartFilled = label.querySelector('.heart-filled');
+    // Contar cuántos están destacados actualmente
+    const currentFeaturedCount = Array.from(document.querySelectorAll('.favorite-toggle'))
+      .filter(cb => cb.checked).length;
 
-      if (!heartOutline || !heartFilled) {
-        console.error('Heart icons not found inside label');
-        return;
-      }
+    // Si se intenta activar y ya hay 3 destacados
+    if (featured && currentFeaturedCount > 3) {
+      // Revertir el checkbox
+      checkbox.checked = false;
 
-      if (featured) {
-        heartOutline.classList.add('hidden');
-        heartFilled.classList.remove('hidden');
-      } else {
-        heartOutline.classList.remove('hidden');
-        heartFilled.classList.add('hidden');
-      }
+      // Mostrar alerta
+      Swal.fire({
+        icon: 'warning',
+        title: 'Límite alcanzado',
+        text: 'Solo puedes marcar hasta 3 cafés como destacados.',
+        confirmButtonColor: '#7D5941'
+      });
+      return;
+    }
 
-      try {
-        await fetch(`http://localhost:8080/api/coffee/${id}/featured`, {
-          method: 'PATCH',
-          headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token'),
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ featured })
-        });
-      } catch (error) {
-        console.error('Error actualizando destacado:', error);
-      }
-    });
+    const label = checkbox.closest('label');
+    const heartOutline = label.querySelector('.heart-outline');
+    const heartFilled = label.querySelector('.heart-filled');
+
+    // Mostrar/Ocultar corazones según estado
+    if (featured) {
+      heartOutline.classList.add('hidden');
+      heartFilled.classList.remove('hidden');
+    } else {
+      heartOutline.classList.remove('hidden');
+      heartFilled.classList.add('hidden');
+    }
+
+    // Actualizar en backend
+    try {
+      await fetch(`http://localhost:8080/api/coffee/${id}/featured`, {
+        method: 'PATCH',
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.getItem('token'),
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ featured })
+      });
+    } catch (error) {
+      console.error('Error actualizando destacado:', error);
+    }
   });
+});
+
 }
 
 async function deleteCoffee(id) {
