@@ -56,6 +56,11 @@ public class CoffeeServiceImpl implements ICoffeeService {
         return coffeeRepository.save(coffee);
     }
 
+    @Override
+     public List<Coffee> getFeaturedCoffees() {
+          return coffeeRepository.findByFeaturedTrue();
+     }
+
     
 
 }

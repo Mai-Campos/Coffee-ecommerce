@@ -142,4 +142,15 @@ public class CoffeeController {
         return ResponseEntity.ok(updated);
     }
 
+    @GetMapping("/featured")
+    public ResponseEntity<List<Coffee>> getFeaturedCoffees() {
+        List<Coffee> featuredCoffees = iCoffeeService.getFeaturedCoffees();
+
+        if (!featuredCoffees.isEmpty()) {
+            return ResponseEntity.ok(featuredCoffees);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+
 }

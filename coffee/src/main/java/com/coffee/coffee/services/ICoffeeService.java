@@ -12,5 +12,6 @@ public interface ICoffeeService {
     boolean exist(Long id);
     Coffee updateCoffee(Long id, Coffee coffee);
     Coffee updateFeaturedStatus(Long id, boolean featured);
+    List<Coffee> getFeaturedCoffees();
 
 }
