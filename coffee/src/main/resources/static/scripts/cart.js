@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('token');
 
+
    if (!token) {
                 Swal.fire({
                     icon: 'warning',
@@ -109,4 +110,63 @@ document.addEventListener('DOMContentLoaded', () => {
       confirmButtonColor: '#7D5941'
     });
   });
+
+const realizarPedidoBtn = document.getElementById('make-order-btn');
+const modal = document.getElementById('direccion-modal');
+const confirmarPedidoBtn = document.getElementById('confirmar-pedido');
+
+realizarPedidoBtn?.addEventListener('click', () => {
+  modal.classList.remove('hidden');
+});
+
+// Confirmar el pedido
+confirmarPedidoBtn?.addEventListener('click', () => {
+  const direccion = document.getElementById('direccion-input').value;
+
+  if (!direccion.trim()) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Dirección requerida',
+      text: 'Por favor, ingresa una dirección de entrega.',
+      confirmButtonColor: '#7D5941'
+    });
+    return;
+  }
+
+  // Crear el pedido (solo enviamos la dirección como parámetro)
+  fetch(`/api/orders?address=${encodeURIComponent(direccion)}`, {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + token
+    },
+    credentials: 'include'
+  })
+  .then(res => {
+    if (!res.ok) throw new Error('Error al registrar el pedido');
+    return res.json();
+  })
+  .then(order => {
+    // Cerrar modal
+    modal.classList.add('hidden');
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Pedido realizado',
+      text: `Tu pedido #${order.id} fue registrado exitosamente.`,
+      confirmButtonColor: '#7D5941'
+    }).then(() => {
+      // Recargar para reflejar carrito vacío
+      window.location.reload();
+    });
+  })
+  .catch(err => {
+    console.error(err);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al registrar el pedido',
+      text: 'Intenta nuevamente más tarde.',
+      confirmButtonColor: '#7D5941'
+    });
+  });
+});
 });

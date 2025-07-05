@@ -18,72 +18,87 @@ fetch('http://localhost:8080/auth/me', {
   if (!user.roles.includes('ROLE_ADMIN') && !user.roles.includes("ROLE_EMPLOYEE")) {
      window.location.href = '/unauthorized.html'; 
   }
+  loadOrders(); // Llamamos al cargar usuario si es válido
 })
 .catch(error => {
   console.error(error);
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const ordersTableBody = document.getElementById('orders-table-body');
 
-    // Mock orders data - replace with real data source as needed
-    let orders = JSON.parse(localStorage.getItem('orders')) || [
-        {
-            id: 1,
-            cliente: 'Juan Perez',
-            productos: 'Café Americano, Latte',
-            precioTotal: '$10.00'
-        },
-        {
-            id: 2,
-            cliente: 'Maria Lopez',
-            productos: 'Mocha, Expresso',
-            precioTotal: '$15.00'
-        }
-    ];
+//Cargar los pedidos
+function loadOrders() {
+  const ordersTableBody = document.getElementById('orders-table-body');
 
-    function saveOrders() {
-        localStorage.setItem('orders', JSON.stringify(orders));
+  fetch('http://localhost:8080/api/orders/admin', {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + token
     }
+  })
+  .then(res => res.json())
+  .then(orders => {
+    ordersTableBody.innerHTML = '';
 
-    function renderOrders() {
-        ordersTableBody.innerHTML = '';
-        orders.forEach(order => {
-            const tr = document.createElement('tr');
+    orders.forEach(order => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="px-6 py-4">${order.id}</td>
+        <td class="px-6 py-4">${order.user?.email ?? 'Sin nombre'}</td>
+        <td class="px-6 py-4">
+          <ul>
+            ${order.orderItems.map(item => `
+              <li>${item.coffee.name} x${item.quantity}</li>
+            `).join('')}
+          </ul>
+        </td>
+        <td class="px-6 py-4">$${order.totalPrice.toFixed(2)}</td>
+          <td class="px-6 py-4 ">${order.address}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    <button class="complete-btn btn" data-id="${order.id}">Completado</button>
+  </td>
+      `;
+      ordersTableBody.appendChild(tr);
+    });
 
-            tr.innerHTML = `
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${order.id}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${order.cliente}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <a href="orders-admin.html" class="text-blue-600 hover:underline">${order.productos}</a>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${order.precioTotal}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <button class="complete-btn btn" data-id="${order.id}">
-                        Completado
-                    </button>
-                </td>
-            `;
+    //Marcar como completadas
+   document.querySelectorAll('.complete-btn').forEach(button => {
+  button.addEventListener('click', e => {
+    const id = e.target.getAttribute('data-id');
 
-            ordersTableBody.appendChild(tr);
-        });
-
-        // Add event listeners to buttons
-        document.querySelectorAll('.complete-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const id = parseInt(e.target.getAttribute('data-id'));
-                if (confirm('¿Desea marcar este pedido como completado?')) {
-                    markOrderCompleted(id);
-                }
-            });
-        });
-    }
-
-    function markOrderCompleted(id) {
-        orders = orders.filter(order => order.id !== id);
-        saveOrders();
-        renderOrders();
-    }
-
-    renderOrders();
+    Swal.fire({
+      title: '¿Desea marcar este pedido como completado?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#7D5941',
+      cancelButtonColor: '#aaa',
+      confirmButtonText: 'Sí, completar',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteOrder(id);
+      }
+    });
+  });
 });
+  })
+  .catch(error => {
+    console.error('Error al cargar pedidos:', error);
+  });
+}
+
+function deleteOrder(id) {
+  fetch(`http://localhost:8080/api/orders/admin/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
+  })
+  .then(res => {
+    if (!res.ok) throw new Error('No se pudo eliminar el pedido');
+    loadOrders(); 
+  })
+  .catch(error => {
+    console.error('Error al eliminar pedido:', error);
+  });
+}

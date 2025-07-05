@@ -1,35 +1,34 @@
 package com.coffee.coffee.models;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "orders")
 @Data
+@Table(name = "orders")
 public class Order {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double totalPrice;
 
     @ManyToOne
-    @JoinColumn(name = "client_id", nullable = false)
-    private User customer;
+    private User user;
 
-    @ManyToMany
-    @JoinTable(
-        name = "order_coffee",
-        joinColumns = @JoinColumn(name = "order_id"),
-        inverseJoinColumns = @JoinColumn(name = "coffee_id")
-    )
-    private List<Coffee> coffees = new ArrayList<>();
+    @Column(nullable = false)
+    private String address;
+
+    @Column(nullable = false)
+    private Double totalPrice;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<OrderItem> orderItems;
     
+    private LocalDateTime createdAt = LocalDateTime.now();
 }

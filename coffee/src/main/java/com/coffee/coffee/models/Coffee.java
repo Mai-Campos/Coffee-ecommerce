@@ -1,12 +1,8 @@
 package com.coffee.coffee.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.Data;
@@ -29,8 +25,7 @@ public class Coffee {
     private boolean featured = false;
     
  
-    @ManyToMany(mappedBy = "coffees")
-    private List<Order> orders = new ArrayList<>();
+   
 
     public Coffee() {
     }
