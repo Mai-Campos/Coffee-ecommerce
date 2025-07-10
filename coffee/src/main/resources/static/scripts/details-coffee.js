@@ -36,22 +36,4 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.toggle('menu-open');
     });
 
-
-    //------------------------------------------Script para el carrito de compras------------------------------------------------------
-
-    let count = 0;
-    let countCart = document.querySelectorAll('.cart-count')
-    const addButtons = document.querySelectorAll('.btn-agregar');
-    addButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            
-           count++;
-           countCart.forEach(counted =>{
-            counted.innerHTML = count;
-           })
-        });
-    });
-
-    //-----------------------------------------------------------------------------------------------------------------------------
-
 });
